@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCM.Web", "HCM.Web\HCM.Web.csproj", "{05281E80-7C71-4556-AB15-62E99546AD51}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCM.Infrastructure", "HCM.Infrastructure\HCM.Infrastructure.csproj", "{45918F30-B39C-42B0-AE47-CA181D56D520}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCM.Domain", "HCM.Domain\HCM.Domain.csproj", "{79E63373-F102-48FB-97EA-63DC9F64B8EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCM.API.Identity", "HCM.Api.Identity\HCM.API.Identity.csproj", "{E0777438-C17A-4A17-B5E4-F3777FE54A6F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCM.Domain.Abstractions", "HCM.Domain.Abstractions\HCM.Domain.Abstractions.csproj", "{4BFA8080-7BDB-47AD-B34F-CAF3A634CE4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCM.API.Employees", "HCM.API.Employees\HCM.API.Employees.csproj", "{C941BBE7-6313-454A-ABB4-37640BFAC20D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05281E80-7C71-4556-AB15-62E99546AD51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05281E80-7C71-4556-AB15-62E99546AD51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05281E80-7C71-4556-AB15-62E99546AD51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05281E80-7C71-4556-AB15-62E99546AD51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45918F30-B39C-42B0-AE47-CA181D56D520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45918F30-B39C-42B0-AE47-CA181D56D520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45918F30-B39C-42B0-AE47-CA181D56D520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45918F30-B39C-42B0-AE47-CA181D56D520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79E63373-F102-48FB-97EA-63DC9F64B8EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E63373-F102-48FB-97EA-63DC9F64B8EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E63373-F102-48FB-97EA-63DC9F64B8EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E63373-F102-48FB-97EA-63DC9F64B8EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0777438-C17A-4A17-B5E4-F3777FE54A6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0777438-C17A-4A17-B5E4-F3777FE54A6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0777438-C17A-4A17-B5E4-F3777FE54A6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0777438-C17A-4A17-B5E4-F3777FE54A6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BFA8080-7BDB-47AD-B34F-CAF3A634CE4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BFA8080-7BDB-47AD-B34F-CAF3A634CE4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BFA8080-7BDB-47AD-B34F-CAF3A634CE4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BFA8080-7BDB-47AD-B34F-CAF3A634CE4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C941BBE7-6313-454A-ABB4-37640BFAC20D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C941BBE7-6313-454A-ABB4-37640BFAC20D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C941BBE7-6313-454A-ABB4-37640BFAC20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C941BBE7-6313-454A-ABB4-37640BFAC20D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F564E8F-3055-4246-B7BF-ED70DA9CB236}
+	EndGlobalSection
+EndGlobal

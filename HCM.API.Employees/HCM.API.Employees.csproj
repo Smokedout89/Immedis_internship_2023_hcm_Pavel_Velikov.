@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>9598380e-457a-4639-8485-f58cf3488e7b</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Abstractions\" />
+    <Folder Include="Features\Address\Handlers\" />
+    <Folder Include="Features\Address\Validations\" />
+    <Folder Include="Features\Address\Responses\" />
+    <Folder Include="Features\Address\Requests\" />
+    <Folder Include="Features\Course\Handlers\" />
+    <Folder Include="Features\Course\Requests\" />
+    <Folder Include="Features\Course\Responses\" />
+    <Folder Include="Features\Course\Validations\" />
+    <Folder Include="Features\Department\Handlers\" />
+    <Folder Include="Features\Department\Requests\" />
+    <Folder Include="Features\Department\Responses\" />
+    <Folder Include="Features\Department\Validations\" />
+    <Folder Include="Features\Employee\Handlers\" />
+    <Folder Include="Features\Employee\Requests\" />
+    <Folder Include="Features\Employee\Responses\" />
+    <Folder Include="Features\Employee\Validations\" />
+    <Folder Include="Features\LeaveRequest\Handlers\" />
+    <Folder Include="Features\LeaveRequest\Requests\" />
+    <Folder Include="Features\LeaveRequest\Responses\" />
+    <Folder Include="Features\LeaveRequest\Validations\" />
+    <Folder Include="Features\Salary\Handlers\" />
+    <Folder Include="Features\Salary\Requests\" />
+    <Folder Include="Features\Salary\Responses\" />
+    <Folder Include="Features\Salary\Validations\" />
+    <Folder Include="Features\Town\Handlers\" />
+    <Folder Include="Features\Town\Requests\" />
+    <Folder Include="Features\Town\Responses\" />
+    <Folder Include="Features\Town\Validations\" />
+    <Folder Include="Mapping\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HCM.Infrastructure\HCM.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

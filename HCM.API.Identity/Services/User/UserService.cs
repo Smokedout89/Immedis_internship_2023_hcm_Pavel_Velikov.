@@ -52,7 +52,7 @@ public class UserService : IUserService
             _iteration);
 
         var role = await _roleRepository.GetByIdAsync("afa1e622-d20b-4d88-8645-da0886dddd40");
-        user.ApplicationRoleId = role!.Id;
+        user.RoleId = role!.Id;
 
         await _userRepository.AddAsync(user);
 
@@ -80,7 +80,7 @@ public class UserService : IUserService
             return Response.BadRequest("Incorrect password provided.");
         }
 
-        var role = await _roleRepository.GetByIdAsync(user.ApplicationRoleId);
+        var role = await _roleRepository.GetByIdAsync(user.RoleId);
 
         JwtTokenGenerator tokenGenerator = new(
             _jwtSettings, _roleRepository);
@@ -99,8 +99,8 @@ public class UserService : IUserService
             return Response.BadRequest("There is no user with provided Id.");
         }
 
-        var userRole = await _roleRepository.GetByIdAsync(user.ApplicationRoleId);
-        var userToReturn = _mapper.Map<GetUsersResponse>(user);
+        var userRole = await _roleRepository.GetByIdAsync(user.RoleId);
+        var userToReturn = _mapper.Map<GetUserResponse>(user);
         userToReturn.Role = userRole!.Name;
 
         return Response.OkData(userToReturn);
@@ -110,12 +110,12 @@ public class UserService : IUserService
     {
         var users = await _userRepository.GetAllAsync();
 
-        var usersToReturn = new List<GetUsersResponse>();
+        var usersToReturn = new List<GetUserResponse>();
 
         foreach (var user in users)
         {
-            var userRole = await _roleRepository.GetByIdAsync(user.ApplicationRoleId);
-            var currentUser = _mapper.Map<GetUsersResponse>(user);
+            var userRole = await _roleRepository.GetByIdAsync(user.RoleId);
+            var currentUser = _mapper.Map<GetUserResponse>(user);
             currentUser.Role = userRole!.Name;
 
             usersToReturn.Add(currentUser);
@@ -147,7 +147,7 @@ public class UserService : IUserService
             return Response.BadRequest("There is no user with provided Id.");
         }
 
-        user.ApplicationRoleId = "506c5148-ffaa-425a-8e39-543a8a494176";
+        user.RoleId = "506c5148-ffaa-425a-8e39-543a8a494176";
         await _userRepository.UpdateAsync(user);
 
         return Response.Ok();

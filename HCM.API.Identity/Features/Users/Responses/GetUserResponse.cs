@@ -1,6 +1,6 @@
 ﻿namespace HCM.Api.Identity.Features.Users.Responses;
 
-public class GetUsersResponse
+public class GetUserResponse
 {
     public string Id { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;

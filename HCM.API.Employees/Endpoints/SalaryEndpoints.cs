@@ -6,6 +6,5 @@ public class SalaryEndpoints : IEndpoint
 {
     public void RegisterEndpoints(WebApplication app)
     {
-        throw new NotImplementedException();
     }
 }

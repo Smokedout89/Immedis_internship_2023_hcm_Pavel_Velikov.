@@ -20,7 +20,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
 
     public async Task<string> GenerateToken(User user)
     {
-        var role = await _roleRepository.GetByIdAsync(user.ApplicationRoleId);
+        var role = await _roleRepository.GetByIdAsync(user.RoleId);
 
         SigningCredentials signingCredentials = new(
             new SymmetricSecurityKey(

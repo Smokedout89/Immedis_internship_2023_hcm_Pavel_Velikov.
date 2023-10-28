@@ -37,10 +37,6 @@
     <Folder Include="Features\Salary\Requests\" />
     <Folder Include="Features\Salary\Responses\" />
     <Folder Include="Features\Salary\Validations\" />
-    <Folder Include="Features\Town\Handlers\" />
-    <Folder Include="Features\Town\Requests\" />
-    <Folder Include="Features\Town\Responses\" />
-    <Folder Include="Features\Town\Validations\" />
     <Folder Include="Mapping\" />
   </ItemGroup>
 

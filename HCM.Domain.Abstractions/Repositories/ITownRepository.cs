@@ -4,4 +4,5 @@ using Models;
 
 public interface ITownRepository : IRepository<Town>
 {
+    Task<Town?> GetTownByName(string name);
 }

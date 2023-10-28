@@ -2,6 +2,8 @@
 
 using Abstractions;
 using Domain.Mapping;
+using Services.Department;
+using Services.Town;
 
 public static class DependencyInjection
 {
@@ -11,6 +13,8 @@ public static class DependencyInjection
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
         services.AddDbMappings();
+
+        services.AddScoped<ITownService, TownService>();
 
         return services;
     }

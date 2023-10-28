@@ -6,6 +6,5 @@ public class LeaveRequestEndpoints : IEndpoint
 {
     public void RegisterEndpoints(WebApplication app)
     {
-        throw new NotImplementedException();
     }
 }

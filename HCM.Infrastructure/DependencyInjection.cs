@@ -37,20 +37,7 @@ public static class DependencyInjection
             });
 
         services.AddAuth(configuration);
-
-        services.AddScoped(
-            typeof(IRepository<Role>),
-            typeof(Repository<Role, RoleDb>));
-        services.AddScoped(
-            typeof(IRoleRepository),
-            typeof(RoleRepository));
-
-        services.AddScoped(
-            typeof(IRepository<User>),
-            typeof(Repository<User, UserDb>));
-        services.AddScoped(
-            typeof(IUserRepository),
-            typeof(UserRepository));
+        services.AddRepositories();
 
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetEntryAssembly()!));
 
@@ -74,6 +61,75 @@ public static class DependencyInjection
             .SeedAsync(
                 dbContext,
                 serviceScope.ServiceProvider).GetAwaiter().GetResult();
+    }
+
+    private static IServiceCollection AddRepositories(
+        this IServiceCollection services)
+    {
+        services.AddScoped(
+            typeof(IRepository<Address>),
+            typeof(Repository<Address, AddressDb>));
+        services.AddScoped(
+            typeof(IAddressRepository),
+            typeof(AddressRepository));
+
+        services.AddScoped(
+            typeof(IRepository<Course>),
+            typeof(Repository<Course, CourseDb>));
+        services.AddScoped(
+            typeof(ICourseRepository),
+            typeof(CourseRepository));
+
+        services.AddScoped(
+            typeof(IRepository<Department>),
+            typeof(Repository<Department, DepartmentDb>));
+        services.AddScoped(
+            typeof(IDepartmentRepository),
+            typeof(DepartmentRepository));
+
+        services.AddScoped(
+            typeof(IRepository<Employee>),
+            typeof(Repository<Employee, EmployeeDb>));
+        services.AddScoped(
+            typeof(IEmployeeRepository),
+            typeof(EmployeeRepository));
+
+        services.AddScoped(
+            typeof(IRepository<LeaveRequest>),
+            typeof(Repository<LeaveRequest, LeaveRequestDb>));
+        services.AddScoped(
+            typeof(ILeaveRequestRepository),
+            typeof(LeaveRequestRepository));
+
+        services.AddScoped(
+            typeof(IRepository<Role>),
+            typeof(Repository<Role, RoleDb>));
+        services.AddScoped(
+            typeof(IRoleRepository),
+            typeof(RoleRepository));
+
+        services.AddScoped(
+            typeof(IRepository<Salary>),
+            typeof(Repository<Salary, SalaryDb>));
+        services.AddScoped(
+            typeof(ISalaryRepository),
+            typeof(SalaryRepository));
+
+        services.AddScoped(
+            typeof(IRepository<Town>),
+            typeof(Repository<Town, TownDb>));
+        services.AddScoped(
+            typeof(ITownRepository),
+            typeof(TownRepository));
+
+        services.AddScoped(
+            typeof(IRepository<User>),
+            typeof(Repository<User, UserDb>));
+        services.AddScoped(
+            typeof(IUserRepository),
+            typeof(UserRepository));
+
+        return services;
     }
 
     private static IServiceCollection AddAuth(

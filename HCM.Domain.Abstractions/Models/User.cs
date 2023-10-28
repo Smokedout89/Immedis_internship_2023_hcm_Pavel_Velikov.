@@ -8,5 +8,5 @@ public class User : Model
 
     public string PasswordHash { get; set; } = string.Empty;
 
-    public string ApplicationRoleId { get; set; } = string.Empty;
+    public string RoleId { get; set; } = string.Empty;
 }

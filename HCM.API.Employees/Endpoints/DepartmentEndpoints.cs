@@ -6,6 +6,5 @@ public class DepartmentEndpoints : IEndpoint
 {
     public void RegisterEndpoints(WebApplication app)
     {
-        throw new NotImplementedException();
     }
 }

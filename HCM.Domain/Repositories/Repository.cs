@@ -39,6 +39,11 @@ public class Repository<TModel, TPostgres> : IRepository<TModel>
     {
         var entity = await _dbSet.FindAsync(id);
 
+        if (entity!.IsDeleted)
+        {
+            return null;
+        }
+
         return _mapper.Map<TModel>(entity!);
     }
 
@@ -66,6 +71,7 @@ public class Repository<TModel, TPostgres> : IRepository<TModel>
         var entity = _mapper.Map<TPostgres>(model);
 
         entity.UpdatedOn = DateTime.UtcNow;
+
         _dbSet.Update(entity);
         await _context.SaveChangesAsync();
 

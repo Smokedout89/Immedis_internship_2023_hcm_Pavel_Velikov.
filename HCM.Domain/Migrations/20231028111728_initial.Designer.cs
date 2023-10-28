@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HCM.Domain.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231027130406_changedProperties")]
-    partial class changedProperties
+    [Migration("20231028111728_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,13 @@ namespace HCM.Domain.Migrations
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("StreetName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("StreetNumber")
+                        .HasColumnType("integer");
 
                     b.Property<string>("TownId")
                         .IsRequired()

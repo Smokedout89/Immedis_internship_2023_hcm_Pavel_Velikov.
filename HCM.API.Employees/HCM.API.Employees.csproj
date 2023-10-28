@@ -13,10 +13,6 @@
 
   <ItemGroup>
     <Folder Include="Abstractions\" />
-    <Folder Include="Features\Address\Handlers\" />
-    <Folder Include="Features\Address\Validations\" />
-    <Folder Include="Features\Address\Responses\" />
-    <Folder Include="Features\Address\Requests\" />
     <Folder Include="Features\Course\Handlers\" />
     <Folder Include="Features\Course\Requests\" />
     <Folder Include="Features\Course\Responses\" />

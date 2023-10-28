@@ -4,7 +4,6 @@ using Abstractions;
 using Features.Town.Requests;
 
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 
 public class TownEndpoints : IEndpoint
 {
@@ -36,13 +35,18 @@ public class TownEndpoints : IEndpoint
         return await sender.Send(request);
     }
 
-    private static async Task<IResult> UpdateTown(ISender sender, UpdateTownRequest request)
+    private static async Task<IResult> UpdateTown(
+        ISender sender, string id, UpdateTownRequest request)
     {
+        request.Id = id;
+
         return await sender.Send(request);
     }
 
-    private static async Task<IResult> DeleteTown(ISender sender, [FromBody] DeleteTownRequest request)
+    private static async Task<IResult> DeleteTown(ISender sender, string id)
     {
+        var request = new DeleteTownRequest { Id = id };
+
         return await sender.Send(request);
     }
 }

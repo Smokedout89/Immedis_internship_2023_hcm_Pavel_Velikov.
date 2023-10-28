@@ -33,6 +33,13 @@ namespace HCM.Domain.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
+                    b.Property<string>("StreetName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("StreetNumber")
+                        .HasColumnType("integer");
+
                     b.Property<string>("TownId")
                         .IsRequired()
                         .HasColumnType("text");

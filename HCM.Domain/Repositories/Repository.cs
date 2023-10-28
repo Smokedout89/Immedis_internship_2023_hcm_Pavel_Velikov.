@@ -39,7 +39,7 @@ public class Repository<TModel, TPostgres> : IRepository<TModel>
     {
         var entity = await _dbSet.FindAsync(id);
 
-        if (entity!.IsDeleted)
+        if (entity is null || entity!.IsDeleted)
         {
             return null;
         }

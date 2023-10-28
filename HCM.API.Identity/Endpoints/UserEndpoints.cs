@@ -1,11 +1,11 @@
 ﻿namespace HCM.Api.Identity.Endpoints;
 
 using Abstractions;
+
 using Features.Roles.Requests;
 using Features.Users.Requests;
 
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 
 public class UserEndpoints : IEndpoint
 {
@@ -54,13 +54,17 @@ public class UserEndpoints : IEndpoint
         return await sender.Send(request);
     }
 
-    private static async Task<IResult> PromoteUser(ISender sender, PromoteUserRequest request)
+    private static async Task<IResult> PromoteUser(ISender sender, string id)
     {
+        var request = new PromoteUserRequest { Id = id };
+
         return await sender.Send(request);
     }
 
-    private static async Task<IResult> DeleteUser(ISender sender, [FromBody] DeleteUserRequest request)
+    private static async Task<IResult> DeleteUser(ISender sender, string id)
     {
+        var request = new DeleteUserRequest { Id = id };
+
         return await sender.Send(request);
     }
 }

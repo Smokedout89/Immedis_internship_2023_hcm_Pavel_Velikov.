@@ -2,8 +2,13 @@
 
 using Abstractions;
 using Domain.Mapping;
-using Services.Department;
 using Services.Town;
+using Services.Salary;
+using Services.Course;
+using Services.Address;
+using Services.Employee;
+using Services.Department;
+using Services.LeaveRequest;
 
 public static class DependencyInjection
 {
@@ -14,6 +19,12 @@ public static class DependencyInjection
         services.AddSwaggerGen();
         services.AddDbMappings();
 
+        services.AddScoped<IAddressService, AddressService>();
+        services.AddScoped<ICourseService, CourseService>();
+        services.AddScoped<IDepartmentService, DepartmentService>();
+        services.AddScoped<IEmployeeService, EmployeeService>();
+        services.AddScoped<ILeaveRequestService, LeaveRequestService>();
+        services.AddScoped<ISalaryService, SalaryService>();
         services.AddScoped<ITownService, TownService>();
 
         return services;

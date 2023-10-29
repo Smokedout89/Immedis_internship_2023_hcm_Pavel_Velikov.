@@ -23,7 +23,7 @@ public class AddressService : IAddressService
 
     public async Task<IResult> CreateAddress(CreateAddressRequest request)
     {
-        var isCreated = await _addressRepository.GetAddressByStreetName(request.StreetName);
+        var isCreated = await _addressRepository.GetAddressByStreetNameAndNumber(request.StreetName, request.StreetNumber);
 
         if (isCreated is not null && isCreated.StreetNumber == request.StreetNumber)
         {

@@ -1,10 +1,11 @@
 ﻿namespace HCM.Domain.Repositories;
 
+using PostgresModels;
 using Abstractions.Models;
 using Abstractions.Repositories;
 
 using MapsterMapper;
-using PostgresModels;
+using Microsoft.EntityFrameworkCore;
 
 public class AddressRepository : Repository<Address, AddressDb>, IAddressRepository
 {
@@ -18,10 +19,11 @@ public class AddressRepository : Repository<Address, AddressDb>, IAddressReposit
         _context = context;
     }
 
-    public async Task<Address?> GetAddressByStreetName(string streetName)
+    public async Task<Address?> GetAddressByStreetNameAndNumber(string streetName, int streetNumber)
     {
-        var address = await _context.Addresses.FindAsync(streetName);
+        var address = await _context.Addresses.FirstOrDefaultAsync(
+            n => n.StreetName == streetName && n.StreetNumber == streetNumber);
 
-        return await Task.FromResult(_mapper.Map<Address>(address!));
+        return _mapper.Map<Address>(address!);
     }
 }

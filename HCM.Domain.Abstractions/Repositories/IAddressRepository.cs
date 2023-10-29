@@ -4,5 +4,5 @@ using Models;
 
 public interface IAddressRepository : IRepository<Address>
 {
-    Task<Address?> GetAddressByStreetName(string streetName);
+    Task<Address?> GetAddressByStreetNameAndNumber(string streetName, int streetNumber);
 }

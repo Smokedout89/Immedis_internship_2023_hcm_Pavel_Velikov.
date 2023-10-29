@@ -1,10 +1,11 @@
 ﻿namespace HCM.Domain.Repositories;
 
+using PostgresModels;
 using Abstractions.Models;
 using Abstractions.Repositories;
 
 using MapsterMapper;
-using PostgresModels;
+using Microsoft.EntityFrameworkCore;
 
 public class CourseRepository : Repository<Course, CourseDb>, ICourseRepository
 {
@@ -20,8 +21,9 @@ public class CourseRepository : Repository<Course, CourseDb>, ICourseRepository
 
     public async Task<Course?> GetCourseByName(string courseName)
     {
-        var course = await _context.Courses.FindAsync(courseName);
+        var course = await _context.Courses.FirstOrDefaultAsync(
+            n => n.Name == courseName);
 
-        return await Task.FromResult(_mapper.Map<Course>(course!));
+        return _mapper.Map<Course>(course!);
     }
 }

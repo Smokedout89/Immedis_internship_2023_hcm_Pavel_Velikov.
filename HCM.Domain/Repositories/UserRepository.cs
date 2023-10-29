@@ -1,9 +1,11 @@
 ﻿namespace HCM.Domain.Repositories;
 
-using MapsterMapper;
 using PostgresModels;
 using Abstractions.Models;
 using Abstractions.Repositories;
+
+using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
 
 public class UserRepository : Repository<User, UserDb>, IUserRepository
 {
@@ -19,8 +21,8 @@ public class UserRepository : Repository<User, UserDb>, IUserRepository
 
     public async Task<User?> GetUserByEmailAsync(string email)
     {
-        var user = await _context.Users.FindAsync(email);
+        var user = await _context.Users.FirstOrDefaultAsync(e => e.Email == email);
 
-        return await Task.FromResult(_mapper.Map<User>(user!));
+        return _mapper.Map<User>(user!);
     }
 }

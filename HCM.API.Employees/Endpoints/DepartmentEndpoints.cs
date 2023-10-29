@@ -45,7 +45,7 @@ public class DepartmentEndpoints : IEndpoint
 
     private static async Task<IResult> DeleteDepartment(ISender sender, string id)
     {
-        var request = new DeleteDepartmentRequest() { Id = id };
+        var request = new DeleteDepartmentRequest { Id = id };
 
         return await sender.Send(request);
     }

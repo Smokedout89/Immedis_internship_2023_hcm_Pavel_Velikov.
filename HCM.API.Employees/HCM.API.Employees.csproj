@@ -17,10 +17,6 @@
     <Folder Include="Features\Employee\Requests\" />
     <Folder Include="Features\Employee\Responses\" />
     <Folder Include="Features\Employee\Validations\" />
-    <Folder Include="Features\LeaveRequest\Handlers\" />
-    <Folder Include="Features\LeaveRequest\Requests\" />
-    <Folder Include="Features\LeaveRequest\Responses\" />
-    <Folder Include="Features\LeaveRequest\Validations\" />
     <Folder Include="Features\Salary\Handlers\" />
     <Folder Include="Features\Salary\Requests\" />
     <Folder Include="Features\Salary\Responses\" />

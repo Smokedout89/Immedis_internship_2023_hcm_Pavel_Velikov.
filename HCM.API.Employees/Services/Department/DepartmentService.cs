@@ -7,8 +7,6 @@ using Features.Department.Responses;
 using Domain.Abstractions.Repositories;
 
 using MapsterMapper;
-using HCM.API.Employees.Features.Course.Responses;
-using HCM.Domain.Repositories;
 
 public class DepartmentService : IDepartmentService
 {

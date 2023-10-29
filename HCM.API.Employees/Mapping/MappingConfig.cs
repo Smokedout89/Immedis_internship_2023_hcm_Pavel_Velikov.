@@ -5,6 +5,7 @@ using Features.Course.Responses;
 using Domain.Abstractions.Models;
 using Features.Address.Responses;
 using Features.Department.Responses;
+using Features.LeaveRequest.Responses;
 
 using Mapster;
 
@@ -15,6 +16,7 @@ public class MappingConfig : IRegister
         config.NewConfig<Address, AddressResponse>();
         config.NewConfig<Course, CourseResponse>();
         config.NewConfig<Department, DepartmentResponse>();
+        config.NewConfig<LeaveRequest, LeaveRequestResponse>();
         config.NewConfig<Town, TownResponse>();
     }
 }

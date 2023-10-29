@@ -19,6 +19,11 @@ public static class DependencyInjection
         services.AddSwaggerGen();
         services.AddDbMappings();
 
+        services.AddHttpClient("IdentityApi", client =>
+        {
+            client.BaseAddress = new Uri("https://localhost:7211");
+        });
+
         services.AddScoped<IAddressService, AddressService>();
         services.AddScoped<ICourseService, CourseService>();
         services.AddScoped<IDepartmentService, DepartmentService>();

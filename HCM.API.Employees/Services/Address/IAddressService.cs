@@ -1,6 +1,4 @@
-﻿using HCM.API.Employees.Features.Town.Requests;
-
-namespace HCM.API.Employees.Services.Address;
+﻿namespace HCM.API.Employees.Services.Address;
 
 using Features.Address.Requests;
 

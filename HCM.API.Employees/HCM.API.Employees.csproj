@@ -17,10 +17,6 @@
     <Folder Include="Features\Employee\Requests\" />
     <Folder Include="Features\Employee\Responses\" />
     <Folder Include="Features\Employee\Validations\" />
-    <Folder Include="Features\Salary\Handlers\" />
-    <Folder Include="Features\Salary\Requests\" />
-    <Folder Include="Features\Salary\Responses\" />
-    <Folder Include="Features\Salary\Validations\" />
     <Folder Include="Mapping\" />
   </ItemGroup>
 

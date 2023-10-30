@@ -39,12 +39,12 @@ public class Repository<TModel, TPostgres> : IRepository<TModel>
     {
         var entity = await _dbSet.FindAsync(id);
 
-        if (entity is null || entity!.IsDeleted)
+        if (entity is null || entity.IsDeleted)
         {
             return null;
         }
 
-        return _mapper.Map<TModel>(entity!);
+        return _mapper.Map<TModel>(entity);
     }
 
     public async Task<IEnumerable<TModel>> GetAllAsync()
@@ -63,7 +63,7 @@ public class Repository<TModel, TPostgres> : IRepository<TModel>
         await _dbSet.AddAsync(entity);
         await _context.SaveChangesAsync();
 
-        return model;
+        return _mapper.Map<TModel>(entity);
     }
 
     public async Task<TModel> UpdateAsync(TModel model)

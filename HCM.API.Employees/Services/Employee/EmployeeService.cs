@@ -97,14 +97,30 @@ public class EmployeeService : IEmployeeService
             return Response.BadRequest("There is no employee with the provided Id.");
         }
 
-        return Response.OkData(_mapper.Map<EmployeeResponse>(employee));
+        var response = _mapper.Map<EmployeeResponse>(employee);
+
+        response.Address = await GetAddressAsString(employee.AddressId);
+        response.Department = await GetDepartmentAsString(employee.DepartmentId);
+        response.NetSalary = await GetSalaryAsDecimal(employee.SalaryId);
+
+        return Response.OkData(response);
     }
 
     public async Task<IResult> GetEmployees()
     {
         var employees = await _employeeRepository.GetAllAsync();
-        var employeesToReturn = employees.Select(
-            employee => _mapper.Map<EmployeeResponse>(employee)).ToList();
+        var employeesToReturn = new List<EmployeeResponse>();
+
+        foreach (var employee in employees)
+        {
+            var current = _mapper.Map<EmployeeResponse>(employee);
+
+            current.Address = await GetAddressAsString(employee.AddressId);
+            current.Department = await GetDepartmentAsString(employee.DepartmentId);
+            current.NetSalary = await GetSalaryAsDecimal(employee.SalaryId);
+
+            employeesToReturn.Add(current);
+        }
 
         return Response.OkData(employeesToReturn);
     }

@@ -11,7 +11,13 @@ public class ApplicationDbContextSeeder : ISeeder
         var seeders = new List<ISeeder>
         {
             new RoleSeeder(),
-            new UserSeeder()
+            new UserSeeder(),
+            new TownSeeder(),
+            new AddressSeeder(),
+            new CourseSeeder(),
+            new DepartmentSeeder(),
+            new SalarySeeder(),
+            new EmployeeSeeder()
         };
 
         foreach (var seeder in seeders)

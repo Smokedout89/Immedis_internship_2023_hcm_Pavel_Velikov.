@@ -11,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
         builder.Configuration);
 }
 
-
 var app = builder.Build();
 {
     if (app.Environment.IsDevelopment())

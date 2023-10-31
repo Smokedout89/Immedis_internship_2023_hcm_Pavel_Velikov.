@@ -23,7 +23,7 @@ public class DepartmentEndpoints : IEndpoint
 
     private static async Task<IResult> GetDepartment(ISender sender, string id)
     {
-        var request = new GetDepartmentRequest() { Id = id };
+        var request = new GetDepartmentRequest { Id = id };
 
         return await sender.Send(request);
     }

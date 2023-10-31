@@ -5,6 +5,7 @@ using Features.Course.Responses;
 using Features.Salary.Responses;
 using Domain.Abstractions.Models;
 using Features.Address.Responses;
+using Features.Employee.Responses;
 using Features.Department.Responses;
 using Features.LeaveRequest.Responses;
 
@@ -17,6 +18,7 @@ public class MappingConfig : IRegister
         config.NewConfig<Address, AddressResponse>();
         config.NewConfig<Course, CourseResponse>();
         config.NewConfig<Department, DepartmentResponse>();
+        config.NewConfig<Employee, EmployeeResponse>();
         config.NewConfig<LeaveRequest, LeaveRequestResponse>();
         config.NewConfig<Salary, SalaryResponse>();
         config.NewConfig<Town, TownResponse>();

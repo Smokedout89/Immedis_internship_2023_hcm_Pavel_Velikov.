@@ -4,7 +4,9 @@ using PostgresModels;
 
 public class RoleSeeder : ISeeder
 {
-    public async Task SeedAsync(ApplicationDbContext context, IServiceProvider serviceProvider)
+    public async Task SeedAsync(
+        ApplicationDbContext context,
+        IServiceProvider serviceProvider)
     {
         if (context.Roles.Any())
         {

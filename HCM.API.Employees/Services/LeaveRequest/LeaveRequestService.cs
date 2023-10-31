@@ -11,19 +11,27 @@ using MapsterMapper;
 public class LeaveRequestService : ILeaveRequestService
 {
     private readonly IMapper _mapper;
+    private readonly IEmployeeRepository _employeeRepository;
     private readonly ILeaveRequestRepository _leaveRequestRepository;
 
     public LeaveRequestService(
         IMapper mapper,
+        IEmployeeRepository employeeRepository,
         ILeaveRequestRepository leaveRequestRepository)
     {
         _mapper = mapper;
+        _employeeRepository = employeeRepository;
         _leaveRequestRepository = leaveRequestRepository;
     }
 
     public async Task<IResult> CreateLeaveRequest(CreateLeaveRequest request)
     {
-        //var employee = 
+        var employee = await _employeeRepository.GetByIdAsync(request.EmployeeId);
+
+        if (employee is null)
+        {
+            return Response.BadRequest("There is no employee with the provided Id.");
+        }
 
         var leaveRequest = new LeaveRequest
         {

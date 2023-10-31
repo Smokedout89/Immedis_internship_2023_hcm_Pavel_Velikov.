@@ -1,14 +1,17 @@
 ﻿namespace HCM.API.Employees;
 
+using Swagger;
 using Abstractions;
-using Domain.Mapping;
 using Services.Town;
+using Domain.Mapping;
 using Services.Salary;
 using Services.Course;
 using Services.Address;
 using Services.Employee;
 using Services.Department;
 using Services.LeaveRequest;
+using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 public static class DependencyInjection
 {
@@ -19,10 +22,12 @@ public static class DependencyInjection
         services.AddSwaggerGen();
         services.AddDbMappings();
 
-        services.AddHttpClient("IdentityApi", client =>
-        {
-            client.BaseAddress = new Uri("https://localhost:7211");
-        });
+        services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+
+        //services.AddHttpClient("IdentityApi", client =>
+        //{
+        //    client.BaseAddress = new Uri("https://localhost:7211");
+        //});
 
         services.AddScoped<IAddressService, AddressService>();
         services.AddScoped<ICourseService, CourseService>();

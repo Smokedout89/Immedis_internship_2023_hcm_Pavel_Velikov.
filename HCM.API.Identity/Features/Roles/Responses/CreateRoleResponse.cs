@@ -1,4 +1,4 @@
-﻿namespace HCM.Api.Identity.Features.Roles.Responses;
+﻿namespace HCM.API.Identity.Features.Roles.Responses;
 
 public class CreateRoleResponse
 {

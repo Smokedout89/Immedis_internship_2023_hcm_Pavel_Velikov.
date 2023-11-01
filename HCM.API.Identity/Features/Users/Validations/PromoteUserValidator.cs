@@ -1,7 +1,7 @@
-﻿namespace HCM.Api.Identity.Features.Users.Validation;
+﻿namespace HCM.API.Identity.Features.Users.Validations;
 
-using Requests;
 using FluentValidation;
+using Requests;
 
 public class PromoteUserValidator : AbstractValidator<PromoteUserRequest>
 {

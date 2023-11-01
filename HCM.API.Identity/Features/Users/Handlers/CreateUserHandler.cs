@@ -1,4 +1,4 @@
-﻿namespace HCM.Api.Identity.Features.Users.Handlers;
+﻿namespace HCM.API.Identity.Features.Users.Handlers;
 
 using MediatR;
 using Requests;

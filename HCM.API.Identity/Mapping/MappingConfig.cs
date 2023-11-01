@@ -1,9 +1,8 @@
-﻿namespace HCM.Api.Identity.Mapping;
+﻿namespace HCM.API.Identity.Mapping;
 
-using Features.Users.Responses;
 using Features.Roles.Responses;
-using Domain.Abstractions.Models;
-
+using Features.Users.Responses;
+using HCM.Domain.Abstractions.Models;
 using Mapster;
 
 public class MappingConfig : IRegister

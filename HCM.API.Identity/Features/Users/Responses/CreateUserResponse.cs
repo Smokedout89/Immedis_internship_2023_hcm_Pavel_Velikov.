@@ -1,4 +1,4 @@
-﻿namespace HCM.Api.Identity.Features.Users.Responses;
+﻿namespace HCM.API.Identity.Features.Users.Responses;
 
 public class CreateUserResponse
 {

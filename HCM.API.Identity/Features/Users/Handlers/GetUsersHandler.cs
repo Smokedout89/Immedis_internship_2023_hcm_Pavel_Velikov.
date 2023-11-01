@@ -1,9 +1,7 @@
-﻿namespace HCM.Api.Identity.Features.Users.Handlers;
+﻿namespace HCM.API.Identity.Features.Users.Handlers;
 
-using MapsterMapper;
 using MediatR;
 using Requests;
-using Responses;
 using Services.User;
 
 public class GetUsersHandler : IRequestHandler<GetUsersRequest, IResult>

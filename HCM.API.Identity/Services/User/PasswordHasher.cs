@@ -1,4 +1,4 @@
-﻿namespace HCM.Api.Identity.Services.User;
+﻿namespace HCM.API.Identity.Services.User;
 
 using System.Security.Cryptography;
 using System.Text;

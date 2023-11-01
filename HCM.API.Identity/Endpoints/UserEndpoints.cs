@@ -1,10 +1,8 @@
-﻿namespace HCM.Api.Identity.Endpoints;
+﻿namespace HCM.API.Identity.Endpoints;
 
 using Abstractions;
-
 using Features.Roles.Requests;
 using Features.Users.Requests;
-
 using MediatR;
 
 public class UserEndpoints : IEndpoint

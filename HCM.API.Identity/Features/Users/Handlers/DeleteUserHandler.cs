@@ -1,9 +1,8 @@
-﻿namespace HCM.Api.Identity.Features.Users.Handlers;
-
-using Requests;
-using Services.User;
+﻿namespace HCM.API.Identity.Features.Users.Handlers;
 
 using MediatR;
+using Requests;
+using Services.User;
 
 public class DeleteUserHandler : IRequestHandler<DeleteUserRequest, IResult>
 {

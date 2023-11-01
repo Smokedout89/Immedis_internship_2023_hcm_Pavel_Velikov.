@@ -1,4 +1,4 @@
-﻿namespace HCM.Api.Identity.Abstractions;
+﻿namespace HCM.API.Identity.Abstractions;
 
 public interface IEndpoint
 {

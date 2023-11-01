@@ -1,4 +1,4 @@
-using HCM.Api.Identity;
+using HCM.API.Identity;
 using HCM.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);

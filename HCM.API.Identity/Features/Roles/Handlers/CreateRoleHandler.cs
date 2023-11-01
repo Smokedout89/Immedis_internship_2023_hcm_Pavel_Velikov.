@@ -1,15 +1,13 @@
-﻿namespace HCM.Api.Identity.Features.Roles.Handlers;
+﻿namespace HCM.API.Identity.Features.Roles.Handlers;
 
+using HCM.Domain.Abstractions.Models;
+using HCM.Domain.Abstractions.Repositories;
+using HCM.Infrastructure.Responses;
+using MapsterMapper;
+using MediatR;
 using Microsoft.AspNetCore.Http;
-
 using Requests;
 using Responses;
-using Infrastructure.Responses;
-using Domain.Abstractions.Models;
-using Domain.Abstractions.Repositories;
-
-using MediatR;
-using MapsterMapper;
 
 public class CreateRoleHandler : IRequestHandler<CreateRoleRequest, IResult>
 {

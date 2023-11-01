@@ -1,6 +1,6 @@
-﻿namespace HCM.Api.Identity.Features.Users.Requests;
+﻿namespace HCM.API.Identity.Features.Users.Requests;
 
-using Infrastructure.Requests;
+using HCM.Infrastructure.Requests;
 
 public class LoginUserRequest : BaseRequest
 {

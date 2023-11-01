@@ -1,7 +1,7 @@
-﻿namespace HCM.Api.Identity.Features.Users.Validation;
+﻿namespace HCM.API.Identity.Features.Users.Validations;
 
-using Requests;
 using FluentValidation;
+using Requests;
 
 public class CreateUserValidator : AbstractValidator<CreateUserRequest>
 {
@@ -29,5 +29,9 @@ public class CreateUserValidator : AbstractValidator<CreateUserRequest>
             .WithMessage("Your password must contain at least one number.");
         //.Matches(@"[\!\?\*\.]+")
         //.WithMessage("Your password must contain at least one (!? *.).");
+
+        RuleFor(x => x.Password)
+            .Matches(x => x.RePassword)
+            .WithMessage("Password and Re-Password don't match.");
     }
 }

@@ -1,8 +1,23 @@
 using HCM.Web;
+using HCM.Web.APIServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddWeb();
+
+builder.Services.AddScoped<APIAuthService>();
+
+builder.Services.AddHttpClient("APIAuthService",
+    client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["ApiIdentityBaseUrl"]!);
+});
+
+builder.Services.AddHttpClient("ApiEmployeeService",
+    client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["ApiEmployeeBaseUrl"]!);
+});
 
 var app = builder.Build();
 

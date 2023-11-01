@@ -1,7 +1,7 @@
-﻿namespace HCM.Api.Identity.Features.Roles.Validation;
+﻿namespace HCM.API.Identity.Features.Roles.Validations;
 
-using Requests;
 using FluentValidation;
+using Requests;
 
 public class CreateRoleValidation : AbstractValidator<CreateRoleRequest>
 {

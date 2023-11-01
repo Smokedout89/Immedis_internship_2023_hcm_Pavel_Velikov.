@@ -1,12 +1,11 @@
-﻿namespace HCM.Api.Identity.Services.User;
+﻿namespace HCM.API.Identity.Services.User;
 
 using Features.Users.Requests;
-using Infrastructure.Responses;
 using Features.Users.Responses;
-using Domain.Abstractions.Models;
-using Infrastructure.Authentication;
-using Domain.Abstractions.Repositories;
-
+using HCM.Domain.Abstractions.Models;
+using HCM.Domain.Abstractions.Repositories;
+using HCM.Infrastructure.Authentication;
+using HCM.Infrastructure.Responses;
 using MapsterMapper;
 
 public class UserService : IUserService

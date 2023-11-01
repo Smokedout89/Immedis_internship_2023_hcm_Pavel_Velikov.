@@ -1,6 +1,6 @@
-﻿namespace HCM.Api.Identity.Features.Roles.Requests;
+﻿namespace HCM.API.Identity.Features.Roles.Requests;
 
-using Infrastructure.Requests;
+using HCM.Infrastructure.Requests;
 
 public class CreateRoleRequest : BaseRequest
 {

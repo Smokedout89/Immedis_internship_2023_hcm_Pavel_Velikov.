@@ -1,10 +1,8 @@
-﻿using System.Diagnostics;
+﻿namespace HCM.Web.Areas.Identity.Controllers;
 
+using System.Diagnostics;
 using HCM.Web.Models;
-
 using Microsoft.AspNetCore.Mvc;
-
-namespace HCM.Web.Controllers;
 
 public class HomeController : Controller
 {

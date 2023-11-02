@@ -2,10 +2,11 @@
 
 using Features.Users.Requests;
 using Features.Users.Responses;
+using Infrastructure.Responses;
+using Infrastructure.Authentication;
 using HCM.Domain.Abstractions.Models;
 using HCM.Domain.Abstractions.Repositories;
-using HCM.Infrastructure.Authentication;
-using HCM.Infrastructure.Responses;
+
 using MapsterMapper;
 
 public class UserService : IUserService

@@ -8,16 +8,21 @@
 
         <h1 class="display-4 mt-4">Welcome</h1>
 
-        @if (TempData["SuccessMessage"] != null)
-        {
-            <div class="text-center alert alert-success">@TempData["SuccessMessage"]</div>
-        }
-        
-        <br/>
-        <br/>
+        <div class="container" mt-5>
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success text-center" style="width: 50%; margin: 0 auto;">
+                    @TempData["SuccessMessage"]
+                </div>
+                @* <div class="text-center alert alert-success">@TempData["SuccessMessage"]</div> *@
+            }
+        </div>
+
+        <br />
+        <br />
 
         @if (HttpAccessor.HttpContext!.Session.GetString("ApplicationToken") != null &&
-            HttpAccessor.HttpContext!.Session.GetString("ApplicationToken")!.Length > 0)
+        HttpAccessor.HttpContext!.Session.GetString("ApplicationToken")!.Length > 0)
         {
             <h3>You can now manage Employees and use the other functionalities of the site.</h3>
         }

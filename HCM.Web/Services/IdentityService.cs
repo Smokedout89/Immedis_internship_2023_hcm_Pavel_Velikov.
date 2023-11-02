@@ -1,13 +1,14 @@
-﻿namespace HCM.Web.APIServices;
+﻿namespace HCM.Web.Services;
 
 using Models;
+using Contracts;
 
-public class AuthService
+public class IdentityService : IIdentityService
 {
     private readonly string _apiBaseUrl;
     private readonly IHttpClientFactory _clientFactory;
 
-    public AuthService(IHttpClientFactory clientFactory, IConfiguration configuration)
+    public IdentityService(IHttpClientFactory clientFactory, IConfiguration configuration)
     {
         _clientFactory = clientFactory;
         _apiBaseUrl = configuration["ApiIdentityBaseUrl"]!;

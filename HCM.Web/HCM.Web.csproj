@@ -14,4 +14,9 @@
     <ProjectReference Include="..\HCM.Infrastructure\HCM.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\User\Controllers\" />
+  </ItemGroup>
+
 </Project>

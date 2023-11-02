@@ -1,18 +1,18 @@
-﻿namespace HCM.Web.Controllers
+﻿namespace HCM.Web.Areas.Identity.Controllers
 {
-    using System.Security.Claims;
     using Common;
     using Models;
-    using APIServices;
+    using Services;
+    using System.Security.Claims;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.Cookies;
-    using Microsoft.AspNetCore.Mvc;
 
     public class AuthController : Controller
     {
-        private readonly AuthService _authService;
+        private readonly IdentityService _authService;
 
-        public AuthController(AuthService authService)
+        public AuthController(IdentityService authService)
         {
             _authService = authService;
         }
@@ -97,7 +97,7 @@
             await HttpContext.SignOutAsync();
             HttpContext.Session.SetString("ApplicationToken", string.Empty);
 
-            TempData["SuccessMessage"] = "You have successfully logged out.";
+            TempData["SuccessMessage"] = "You have logged out successfully.";
 
             return RedirectToAction("Index", "Home");
         }

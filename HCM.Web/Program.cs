@@ -1,6 +1,6 @@
 using HCM.Web;
-using HCM.Web.APIServices;
 using HCM.Web.Middleware;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddWeb(builder.Configuration);
@@ -26,6 +26,6 @@ app.UseMiddleware<ApplicationToken>();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=Identity}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

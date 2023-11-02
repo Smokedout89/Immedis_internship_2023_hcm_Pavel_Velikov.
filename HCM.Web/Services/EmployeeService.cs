@@ -1,9 +1,11 @@
-﻿namespace HCM.Web.APIServices;
+﻿namespace HCM.Web.Services;
 
-public class EmployeeService
+using Contracts;
+
+public class EmployeeService : IEmployeeService
 {
-    private readonly HttpClient _httpClient;
     private readonly string _apiBaseUrl;
+    private readonly HttpClient _httpClient;
 
     public EmployeeService(HttpClient httpClient, IConfiguration configuration)
     {

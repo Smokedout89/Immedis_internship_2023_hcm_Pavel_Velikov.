@@ -1,7 +1,7 @@
 ﻿namespace HCM.Web;
 
-using APIServices;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Services;
 
 public static class DependencyInjection
 {
@@ -29,7 +29,7 @@ public static class DependencyInjection
             options.Cookie.IsEssential = true;
         });
 
-        services.AddScoped<AuthService>();
+        services.AddScoped<IdentityService>();
         services.AddScoped<EmployeeService>();
 
         services.AddHttpClient("APIAuthService",

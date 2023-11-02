@@ -1,11 +1,11 @@
 ﻿namespace HCM.Web.APIServices;
 
-public class ApiEmployeeService
+public class EmployeeService
 {
     private readonly HttpClient _httpClient;
     private readonly string _apiBaseUrl;
 
-    public ApiEmployeeService(HttpClient httpClient, IConfiguration configuration)
+    public EmployeeService(HttpClient httpClient, IConfiguration configuration)
     {
         _httpClient = httpClient;
         _apiBaseUrl = configuration["ApiEmployeeBaseUrl"]!;

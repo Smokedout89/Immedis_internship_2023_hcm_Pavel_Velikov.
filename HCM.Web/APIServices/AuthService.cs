@@ -2,12 +2,12 @@
 
 using Models;
 
-public class APIAuthService
+public class AuthService
 {
     private readonly string _apiBaseUrl;
     private readonly IHttpClientFactory _clientFactory;
 
-    public APIAuthService(IHttpClientFactory clientFactory, IConfiguration configuration)
+    public AuthService(IHttpClientFactory clientFactory, IConfiguration configuration)
     {
         _clientFactory = clientFactory;
         _apiBaseUrl = configuration["ApiIdentityBaseUrl"]!;
@@ -17,6 +17,16 @@ public class APIAuthService
     {
         var client = _clientFactory.CreateClient(_apiBaseUrl);
         var requestUri = $"{_apiBaseUrl}/api/users/register";
+
+        var response = await client.PostAsJsonAsync(requestUri, model);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> LoginUserAsync(LoginModel model)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/users/login";
 
         var response = await client.PostAsJsonAsync(requestUri, model);
 

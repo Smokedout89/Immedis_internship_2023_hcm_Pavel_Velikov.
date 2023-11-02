@@ -1,8 +1,32 @@
-﻿@{
+﻿@inject IHttpContextAccessor HttpAccessor
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="container">
+
+        <h1 class="display-4 mt-4">Welcome</h1>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="text-center alert alert-success">@TempData["SuccessMessage"]</div>
+        }
+        
+        <br/>
+        <br/>
+
+        @if (HttpAccessor.HttpContext!.Session.GetString("ApplicationToken") != null &&
+            HttpAccessor.HttpContext!.Session.GetString("ApplicationToken")!.Length > 0)
+        {
+            <h3>You can now manage Employees and use the other functionalities of the site.</h3>
+        }
+        else
+        {
+            <h3>
+                Please <a asp-controller="Auth" asp-action="Login">Login</a> or
+                <a asp-controller="Auth" asp-action="Register">Register</a> to use the functionality of the application.
+            </h3>
+        }
+    </div>
 </div>

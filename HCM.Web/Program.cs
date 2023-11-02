@@ -1,23 +1,9 @@
 using HCM.Web;
 using HCM.Web.APIServices;
-
+using HCM.Web.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddWeb();
-
-builder.Services.AddScoped<APIAuthService>();
-
-builder.Services.AddHttpClient("APIAuthService",
-    client =>
-{
-    client.BaseAddress = new Uri(builder.Configuration["ApiIdentityBaseUrl"]!);
-});
-
-builder.Services.AddHttpClient("ApiEmployeeService",
-    client =>
-{
-    client.BaseAddress = new Uri(builder.Configuration["ApiEmployeeBaseUrl"]!);
-});
+builder.Services.AddWeb(builder.Configuration);
 
 var app = builder.Build();
 
@@ -32,7 +18,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSession();
+app.UseMiddleware<ApplicationToken>();
 
 app.MapControllerRoute(
     name: "default",

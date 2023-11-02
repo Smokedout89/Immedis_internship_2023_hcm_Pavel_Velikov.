@@ -35,7 +35,7 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
                 validationResult.Errors.Select(
                     x => x.ErrorMessage)));
 
-            return (TResponse)Results.BadRequest(ResponseStatus.Error(errors));
+            return (TResponse)Response.BadRequest(errors);
         }
         
         return await next();

@@ -33,4 +33,12 @@ public static class ResponseParser
 
         return parsedResponse!;
     }
+
+    public static async Task<DepartmentResponse> DepartmentResponse(HttpResponseMessage apiResponse)
+    {
+        var jsonResponse = await apiResponse.Content.ReadAsStringAsync();
+        var parsedResponse = JsonConvert.DeserializeObject<DepartmentResponse>(jsonResponse);
+
+        return parsedResponse!;
+    }
 }

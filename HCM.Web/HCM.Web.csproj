@@ -14,8 +14,4 @@
     <ProjectReference Include="..\HCM.Infrastructure\HCM.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Department\" />
-  </ItemGroup>
-
 </Project>

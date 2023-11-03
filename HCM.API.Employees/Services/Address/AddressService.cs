@@ -6,17 +6,13 @@ using Domain.Abstractions.Models;
 using Features.Address.Responses;
 using Domain.Abstractions.Repositories;
 
-using MapsterMapper;
-
 public class AddressService : IAddressService
 {
-    private readonly IMapper _mapper;
     private readonly ITownRepository _townRepository;
     private readonly IAddressRepository _addressRepository;
 
-    public AddressService(IMapper mapper, IAddressRepository addressRepository, ITownRepository townRepository)
+    public AddressService(IAddressRepository addressRepository, ITownRepository townRepository)
     {
-        _mapper = mapper;
         _addressRepository = addressRepository;
         _townRepository = townRepository;
     }

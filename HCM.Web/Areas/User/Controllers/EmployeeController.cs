@@ -1,11 +1,11 @@
 ﻿namespace HCM.Web.Areas.User.Controllers;
 
-using MapsterMapper;
 using Models;
 using Responses;
 using Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
+using MapsterMapper;
 public class EmployeeController : Controller
 {
     private readonly IMapper _mapper;
@@ -32,4 +32,42 @@ public class EmployeeController : Controller
 
         return View(employees);
     }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    //[HttpPost]
+    //[ValidateAntiForgeryToken]
+    //public async Task<IActionResult> Create(EmployeeCreateModel model)
+    //{
+
+    //}
+
+    //[HttpGet]
+    //public async Task<IActionResult> Edit(int id)
+    //{
+
+    //}
+
+    //[HttpPut]
+    //[ValidateAntiForgeryToken]
+    //public async Task<IActionResult> Edit(EmployeeModel employee)
+    //{
+
+    //}
+
+    //[HttpGet]
+    //public async Task<IActionResult> Delete(int id)
+    //{
+
+    //}
+
+    //[HttpDelete]
+    //public async Task<IActionResult> DeleteEmp(int id)
+    //{
+
+    //}
 }

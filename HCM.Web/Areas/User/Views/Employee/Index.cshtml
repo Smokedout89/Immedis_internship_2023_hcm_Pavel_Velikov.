@@ -22,7 +22,7 @@
                             <th class="text-center">Department</th>
                             <th class="text-center">Address</th>
                             <th class="text-center">Net Salary</th>
-                            <th class="text-center bg-danger">Manage</th>
+                            <th class="text-center bg-secondary">Manage Employee</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,20 +40,25 @@
                                 <td class="text-center">@employee.Department</td>
                                 <td class="text-center">@employee.Address</td>
                                 <td class="text-center">@employee.NetSalary.ToString("C")</td>
-                                <td>
-                                    <div class="w-50 btn-group">
+                                <td class="">
+                                    <div class="btn-group">
                                         <a asp-controller="Employee" asp-action="" asp-route-id="@employee.Id"
-                                           class="btn btn-primary mx-1"><i class="bi bi-pencil-square"></i>Edit</a>
+                                           class="btn btn-info mx-1" style="width: 60px;"><i class="bi bi-pencil-square"></i>Edit</a>
                                         <a asp-controller="Employee" asp-action="" asp-route-id="@employee.Id"
-                                           class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i>Delete</a>
+                                           class="btn btn-danger mx-1" style="width: 65px;"><i class="bi bi-trash3-fill"></i>Delete</a>
                                     </div>
                                 </td>
-
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-12 text-center">
+            <a asp-controller="Employee" asp-action="Create"
+               class="btn btn-success"><i class="bi bi-plus-circle"></i> &nbsp;Add Employee</a>
         </div>
     </div>
 </div>
@@ -73,7 +78,7 @@
     }
 
     .table-responsive {
-        max-height: 500px;
+        max-height: 600px;
         overflow-y: auto;
     }
 </style>

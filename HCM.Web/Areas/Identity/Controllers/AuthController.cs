@@ -53,15 +53,8 @@ public class AuthController : Controller
 
         var principal = new ClaimsPrincipal(identity);
 
-        var authProperties = new AuthenticationProperties
-        {
-            IsPersistent = true,
-            ExpiresUtc = DateTime.UtcNow.AddMinutes(30)
-        };
-
         await HttpContext.SignInAsync(
-            CookieAuthenticationDefaults.AuthenticationScheme,
-            principal, authProperties);
+            CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
         HttpContext.Session.SetString("ApplicationToken", response.Payload.Token);
 

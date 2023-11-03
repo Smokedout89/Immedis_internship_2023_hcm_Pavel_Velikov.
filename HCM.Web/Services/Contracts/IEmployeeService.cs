@@ -2,5 +2,5 @@
 
 public interface IEmployeeService
 {
-    
+    Task<HttpResponseMessage> GetEmployees();
 }

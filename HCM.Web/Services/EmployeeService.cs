@@ -5,11 +5,21 @@ using Contracts;
 public class EmployeeService : IEmployeeService
 {
     private readonly string _apiBaseUrl;
-    private readonly HttpClient _httpClient;
+    private readonly IHttpClientFactory _clientFactory;
 
-    public EmployeeService(HttpClient httpClient, IConfiguration configuration)
+    public EmployeeService(IHttpClientFactory clientFactory, IConfiguration configuration)
     {
-        _httpClient = httpClient;
+        _clientFactory = clientFactory;
         _apiBaseUrl = configuration["ApiEmployeeBaseUrl"]!;
+    }
+
+    public async Task<HttpResponseMessage> GetEmployees()
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/employees";
+
+        var response = await client.GetAsync(requestUri);
+
+        return response;
     }
 }

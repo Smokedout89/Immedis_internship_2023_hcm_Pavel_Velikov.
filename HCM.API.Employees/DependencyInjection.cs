@@ -24,11 +24,6 @@ public static class DependencyInjection
 
         services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
-        //services.AddHttpClient("IdentityApi", client =>
-        //{
-        //    client.BaseAddress = new Uri("https://localhost:7211");
-        //});
-
         services.AddScoped<IAddressService, AddressService>();
         services.AddScoped<ICourseService, CourseService>();
         services.AddScoped<IDepartmentService, DepartmentService>();

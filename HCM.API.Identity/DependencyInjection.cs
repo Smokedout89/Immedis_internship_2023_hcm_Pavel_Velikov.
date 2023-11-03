@@ -1,10 +1,10 @@
 ﻿namespace HCM.API.Identity;
 
+using Swagger;
 using Abstractions;
+using Services.User;
 using HCM.Domain.Mapping;
 using Microsoft.Extensions.Options;
-using Services.User;
-using Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 public static class DependencyInjection

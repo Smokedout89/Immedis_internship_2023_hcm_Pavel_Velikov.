@@ -1,7 +1,7 @@
 ﻿namespace HCM.Web.Areas.Identity.Controllers;
 
+using Models;
 using System.Diagnostics;
-using HCM.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 public class HomeController : Controller
@@ -14,11 +14,6 @@ public class HomeController : Controller
     }
 
     public IActionResult Index()
-    {
-        return View();
-    }
-
-    public IActionResult Privacy()
     {
         return View();
     }

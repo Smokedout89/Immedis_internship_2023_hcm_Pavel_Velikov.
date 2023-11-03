@@ -1,105 +1,111 @@
-﻿namespace HCM.Web.Areas.Identity.Controllers
+﻿namespace HCM.Web.Areas.Identity.Controllers;
+
+using Models;
+using Responses;
+using Services.Contracts;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
+public class AuthController : Controller
 {
-    using Common;
-    using Models;
-    using Services;
-    using System.Security.Claims;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Authentication;
-    using Microsoft.AspNetCore.Authentication.Cookies;
+    private readonly IIdentityService _identityService;
 
-    public class AuthController : Controller
+    public AuthController(IIdentityService identityService)
     {
-        private readonly IdentityService _authService;
+        _identityService = identityService;
+    }
 
-        public AuthController(IdentityService authService)
-        {
-            _authService = authService;
-        }
+    [HttpGet]
+    public IActionResult Login()
+    {
+        return View();
+    }
 
-        [HttpGet]
-        public IActionResult Login()
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Login(LoginModel model)
+    {
+        var apiResponse = await _identityService.LoginUserAsync(model);
+
+        if (!apiResponse.IsSuccessStatusCode)
         {
+            var errorMessages = await ResponseParser.ErrorResponse(apiResponse);
+
+            foreach (var errorMessage in errorMessages)
+            {
+                ModelState.AddModelError(string.Empty, errorMessage);
+            }
+
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginModel model)
+        var response = await ResponseParser.LoginResponse(apiResponse);
+
+        var identity = new ClaimsIdentity(
+            CookieAuthenticationDefaults.AuthenticationScheme);
+
+        identity.AddClaim(new Claim(
+            ClaimTypes.Email, response.Payload.Email));
+        identity.AddClaim(new Claim(
+            ClaimTypes.Role, response.Payload.Role));
+
+        var principal = new ClaimsPrincipal(identity);
+
+        var authProperties = new AuthenticationProperties
         {
-            var apiResponse = await _authService.LoginUserAsync(model);
+            IsPersistent = true,
+            ExpiresUtc = DateTime.UtcNow.AddMinutes(30)
+        };
 
-            if (!apiResponse.IsSuccessStatusCode)
+        await HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            principal, authProperties);
+
+        HttpContext.Session.SetString("ApplicationToken", response.Payload.Token);
+
+        TempData["SuccessMessage"] = "You have logged in successfully.";
+
+        return RedirectToAction("Index", "Home");
+    }
+
+    [HttpGet]
+    public IActionResult Register()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Register(RegisterModel model)
+    {
+        var apiResponse = await _identityService.RegisterUserAsync(model);
+
+        if (!apiResponse.IsSuccessStatusCode)
+        {
+            var errorMessages = await ResponseParser.ErrorResponse(apiResponse);
+
+            foreach (var errorMessage in errorMessages)
             {
-                var errorMessages = await ResponseParser.ErrorResponse(apiResponse);
-
-                foreach (var errorMessage in errorMessages)
-                {
-                    ModelState.AddModelError(string.Empty, errorMessage);
-                }
-
-                return View();
+                ModelState.AddModelError(string.Empty, errorMessage);
             }
 
-            var response = await ResponseParser.LoginResponse(apiResponse);
-
-            var identity = new ClaimsIdentity(
-                CookieAuthenticationDefaults.AuthenticationScheme);
-
-            identity.AddClaim(new Claim(
-                ClaimTypes.Email, response.Payload.Email));
-            identity.AddClaim(new Claim(
-                ClaimTypes.Role, response.Payload.Role));
-
-            var principal = new ClaimsPrincipal(identity);
-
-            await HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-            HttpContext.Session.SetString("ApplicationToken", response.Payload.Token);
-
-            TempData["SuccessMessage"] = "You have logged in successfully.";
-
-            return RedirectToAction("Index", "Home");
-        }
-
-        [HttpGet]
-        public IActionResult Register()
-        {
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterModel model)
-        {
-            var apiResponse = await _authService.RegisterUserAsync(model);
+        TempData["SuccessMessage"] = "Registration was successful. You can now log in.";
 
-            if (!apiResponse.IsSuccessStatusCode)
-            {
-                var errorMessages = await ResponseParser.ErrorResponse(apiResponse);
+        return RedirectToAction("Login");
+    }
 
-                foreach (var errorMessage in errorMessages)
-                {
-                    ModelState.AddModelError(string.Empty, errorMessage);
-                }
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync();
+        HttpContext.Session.SetString("ApplicationToken", string.Empty);
 
-                return View();
-            }
+        TempData["SuccessMessage"] = "You have logged out successfully.";
 
-            TempData["SuccessMessage"] = "Registration was successful. You can now log in.";
-
-            return RedirectToAction("Login");
-        }
-
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync();
-            HttpContext.Session.SetString("ApplicationToken", string.Empty);
-
-            TempData["SuccessMessage"] = "You have logged out successfully.";
-
-            return RedirectToAction("Index", "Home");
-        }
+        return RedirectToAction("Index", "Home");
     }
 }

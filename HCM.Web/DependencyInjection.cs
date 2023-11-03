@@ -1,7 +1,9 @@
 ﻿namespace HCM.Web;
 
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Services;
+using Domain.Mapping;
+using Services.Contracts;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 public static class DependencyInjection
 {
@@ -11,6 +13,7 @@ public static class DependencyInjection
     {
         services.AddControllersWithViews();
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        services.AddDbMappings();
 
         services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
@@ -29,16 +32,16 @@ public static class DependencyInjection
             options.Cookie.IsEssential = true;
         });
 
-        services.AddScoped<IdentityService>();
-        services.AddScoped<EmployeeService>();
+        services.AddScoped<IIdentityService, IdentityService>();
+        services.AddScoped<IEmployeeService, EmployeeService>();
 
-        services.AddHttpClient("APIAuthService",
+        services.AddHttpClient("IdentityService",
             client =>
             {
                 client.BaseAddress = new Uri(configuration["ApiIdentityBaseUrl"]!);
             });
 
-        services.AddHttpClient("ApiEmployeeService",
+        services.AddHttpClient("EmployeeService",
             client =>
             {
                 client.BaseAddress = new Uri(configuration["ApiEmployeeBaseUrl"]!);

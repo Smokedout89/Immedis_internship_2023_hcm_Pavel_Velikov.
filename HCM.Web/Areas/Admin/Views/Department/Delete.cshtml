@@ -1,1 +1,24 @@
-﻿
+﻿@model DepartmentModel
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <h1 class="text-center">Delete Department</h1>
+        <div class="col-md-4 pt-5">
+            <form method="post" asp-action="DeleteDep" class="border p-4 rounded">
+                <input asp-for="Id" hidden />
+                <div class="mt-3 text-center">
+                    <label asp-for="Name" class="form-label" style="font-size: 18px">Department Name</label>
+                    <input asp-for="Name" disabled class="form-control" />
+                </div>
+                <div class="mt-3">
+                    <div class="d-flex justify-content-between">
+                        <a asp-controller="Department" asp-action="Index" class="btn btn-secondary pt-2">
+                            Back to Departments
+                        </a>
+                        <button type="submit" class="btn btn-success btn-lg">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

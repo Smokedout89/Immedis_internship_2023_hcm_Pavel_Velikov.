@@ -13,9 +13,9 @@ public class UpdateDepartmentValidation : AbstractValidator<UpdateDepartmentRequ
 
         RuleFor(x => x.Name)
             .MinimumLength(3)
-            .WithMessage("Entered town must be at least 3 letters.")
+            .WithMessage("Entered department must be at least 3 letters.")
             .MaximumLength(20)
-            .WithMessage("Entered town must not exceed 30 letters.");
+            .WithMessage("Entered department must not exceed 30 letters.");
     }
 
     private bool ValidateGuid(string id)

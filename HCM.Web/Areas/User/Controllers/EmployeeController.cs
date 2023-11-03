@@ -23,12 +23,8 @@ public class EmployeeController : Controller
         var apiResponse = await _employeeService.GetEmployees();
         var response = await ResponseParser.EmployeeResponse(apiResponse);
 
-        var employees = new List<EmployeeModel>();
-
-        foreach (var employee in response.Payload)
-        {
-            employees.Add(_mapper.Map<EmployeeModel>(employee));
-        }
+        var employees = response.Payload.Select(
+            employee => _mapper.Map<EmployeeModel>(employee)).ToList();
 
         return View(employees);
     }

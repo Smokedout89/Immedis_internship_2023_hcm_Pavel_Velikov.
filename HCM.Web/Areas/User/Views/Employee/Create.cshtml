@@ -1,27 +1,26 @@
-﻿@model EmployeeCreateModel
-
+﻿@model EmployeeWithAllData
 
 <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-md-6">
-            <form method="post" asp-controller="Employee" asp-action="Create" class="border p-4 rounded">
+            <form id="employeeForm" method="post" asp-controller="Employee" asp-action="Create" class="border p-4 rounded">
                 <h1 class="text-center">Create Employee</h1>
 
                 <div class="mb-3">
                     <label asp-for="FirstName" class="form-label">First Name</label>
-                    <input asp-for="FirstName" class="form-control" />
+                    <input asp-for="FirstName" class="form-control" placeholder="Enter first name" />
                 </div>
                 <div class="mb-3">
                     <label asp-for="LastName" class="form-label">Last Name</label>
-                    <input asp-for="LastName" class="form-control" />
+                    <input asp-for="LastName" class="form-control" placeholder="Enter last name" />
                 </div>
                 <div class="mb-3">
                     <label asp-for="Age" class="form-label">Age</label>
-                    <input asp-for="Age" class="form-control" />
+                    <input asp-for="Age" class="form-control" value="18" />
                 </div>
                 <div class="mb-3">
                     <label asp-for="JobTitle" class="form-label">Job Title</label>
-                    <input asp-for="JobTitle" class="form-control" />
+                    <input asp-for="JobTitle" class="form-control" placeholder="Enter job title" />
                 </div>
                 <div class="mb-3">
                     <label asp-for="DateOfBirth" class="form-label">Date of Birth</label>
@@ -34,7 +33,7 @@
                 <div class="mb-3">
                     <label asp-for="Gender" class="form-label">Gender</label>
                     <select asp-for="Gender" class="form-select">
-                        <option>Please Select</option>
+                        <option value="" disabled selected>Select gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -42,25 +41,25 @@
                 <div class="mb-3">
                     <label asp-for="ContractType" class="form-label">Contract Type</label>
                     <select asp-for="ContractType" class="form-select">
-                        <option>Please Select</option>
+                        <option value="" disabled selected>Select contract type</option>
                         <option value="Intern">Intern</option>
-                        <option value="PartTime">PartTime</option>
-                        <option value="FullTime">FullTime</option>
+                        <option value="PartTime">Part Time</option>
+                        <option value="FullTime">Full Time</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Department" class="form-label">Department</label>
-                    <input asp-for="Department" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label asp-for="Address" class="form-label">Address</label>
-                    <input asp-for="Address" class="form-control" />
+                    <select asp-for="Department" asp-items="ViewBag.Departments" class="form-select">
+                        <option value="" disabled selected>Select department</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Salary" class="form-label">Salary</label>
-                    <input asp-for="Salary" class="form-control" />
+                    <select asp-for="Salary" asp-items="ViewBag.Salaries" class="form-select">
+                        <option value="" disabled selected>Select salary</option>
+                    </select>
                 </div>
-
+                <div asp-validation-summary="All" class="text-danger text-center mb-3"></div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success btn-lg">Create</button>
                 </div>
@@ -68,3 +67,34 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var form = document.getElementById("employeeForm");
+        
+        form.addEventListener("submit", function(event) {
+            var genderDropdown = document.getElementById("Gender");
+            var contractTypeDropdown = document.getElementById("ContractType");
+            var departmentDropdown = document.getElementById("Department");
+            var salaryDropdown = document.getElementById("Salary");
+
+            if (!isDropdownSelected(genderDropdown)) {
+                alert("Please select a gender.");
+                event.preventDefault();
+            } else if (!isDropdownSelected(contractTypeDropdown)) {
+                alert("Please select a contract type.");
+                event.preventDefault();
+            } else if (!isDropdownSelected(departmentDropdown)) {
+                alert("Please select a department.");
+                event.preventDefault();
+            } else if (!isDropdownSelected(salaryDropdown)) {
+                alert("Please select a salary.");
+                event.preventDefault();
+            }
+        });
+        
+        function isDropdownSelected(dropdown) {
+            return dropdown.options[dropdown.selectedIndex].value !== "";
+        }
+    });
+</script>

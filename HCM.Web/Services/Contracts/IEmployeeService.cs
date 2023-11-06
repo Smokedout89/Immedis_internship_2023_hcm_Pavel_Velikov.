@@ -4,7 +4,9 @@ using Models;
 
 public interface IEmployeeService
 {
+    // Employees
     Task<HttpResponseMessage> GetEmployees();
+    Task<HttpResponseMessage> CreateEmployee(EmployeeCreateModel model);
 
     // Departments
     Task<HttpResponseMessage> GetDepartment(string id);

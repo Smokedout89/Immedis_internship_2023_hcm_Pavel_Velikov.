@@ -26,6 +26,16 @@ public class EmployeeService : IEmployeeService
         return response;
     }
 
+    public async Task<HttpResponseMessage> CreateEmployee(EmployeeCreateModel model)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/employees";
+
+        var response = await client.PostAsJsonAsync(requestUri, model);
+
+        return response;
+    }
+
     // Departments
 
     public async Task<HttpResponseMessage> GetDepartments()

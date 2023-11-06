@@ -47,10 +47,6 @@
                             </li>
                         }
 
-                        @*          <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="User" asp-controller="" asp-action="Index">Addresses</a>
-                        </li> *@
-
                         <ul class="navbar-nav justify-content-end flex-grow-1">
                             @if (HttpAccessor.HttpContext!.Session.GetString("ApplicationToken") != null &&
                                 HttpAccessor.HttpContext!.Session.GetString("ApplicationToken")!.Length > 0)

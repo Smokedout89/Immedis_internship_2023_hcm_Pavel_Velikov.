@@ -65,4 +65,20 @@ public static class ResponseParser
 
         return parsedResponse!;
     }
+
+    public static async Task<SalariesResponse> SalariesResponse(HttpResponseMessage apiResponse)
+    {
+        var jsonResponse = await apiResponse.Content.ReadAsStringAsync();
+        var parsedResponse = JsonConvert.DeserializeObject<SalariesResponse>(jsonResponse);
+
+        return parsedResponse!;
+    }
+
+    public static async Task<SalaryResponse> SalaryResponse(HttpResponseMessage apiResponse)
+    {
+        var jsonResponse = await apiResponse.Content.ReadAsStringAsync();
+        var parsedResponse = JsonConvert.DeserializeObject<SalaryResponse>(jsonResponse);
+
+        return parsedResponse!;
+    }
 }

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SalaryModel>
+@{
+    ViewData["Title"] = "Salaries Page";
+}
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <h1 class="text-center">Salaries List</h1>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped mt-5">
+                    <thead class="bg-primary">
+                        <tr>
+                            <th class="text-center pb-2">Gross Salary</th>
+                            <th class="text-center pb-2">Net Salary</th>
+                            <th class="text-center pb-2">Bonus Available</th>
+                            <th class="text-center bg-secondary" style="width: 140px;">Manage Salary</th>
+                        </tr>
+                    </thead>
+
+                    <br />
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="text-center alert alert-success">@TempData["SuccessMessage"]</div>
+                    }
+
+                    <tbody>
+                        @foreach (var salary in Model)
+                        {
+                            <tr>
+                                <td class="text-center pt-4">@salary.GrossSalary</td>
+                                <td class="text-center pt-4">@salary.NetSalary</td>
+                                <td class="text-center pt-4">@salary.BonusAvailable</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a asp-controller="Salary" asp-action="Edit" asp-route-id="@salary.Id"
+                                           class="btn btn-info mx-1" style="width: 60px;"><i class="bi bi-pencil-square"></i>Edit</a>
+                                        <a asp-controller="Salary" asp-action="Delete" asp-route-id="@salary.Id"
+                                           class="btn btn-danger mx-1" style="width: 65px;"><i class="bi bi-trash3-fill"></i>Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-12 text-center">
+            <a asp-controller="Salary" asp-action="Create"
+               class="btn btn-success"><i class="bi bi-plus-circle"></i> &nbsp;Add Salary</a>
+        </div>
+    </div>
+</div>

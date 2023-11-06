@@ -1,0 +1,32 @@
+﻿@model SalaryModel
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <h1 class="text-center">Edit Salary</h1>
+        <div class="col-md-3 pt-5">
+            <form method="post" asp-action="Edit" class="border p-4 rounded">
+                <div class="mt-3 text-center">
+                    <label asp-for="GrossSalary" class="form-label" style="font-size: 18px">Salary Name</label>
+                    <input asp-for="GrossSalary" class="form-control text-center" />
+                </div>
+                <div class="mt-3 text-center">
+                    <label asp-for="BonusAvailable" class="form-label" style="font-size: 18px">Bonus Available</label>
+                    <select asp-for="BonusAvailable" class="form-select text-center">
+                        <option value="false">False</option>
+                        <option value="true">True</option>
+                    </select>
+                </div>
+                <br/>
+                <div asp-validation-summary="All" class="text-danger text-center mb-3"></div>
+                <div class="mt-3">
+                    <div class="d-flex justify-content-between">
+                        <a asp-controller="Salary" asp-action="Index" class="btn btn-secondary pt-2">
+                            Back to Salaries
+                        </a>
+                        <button type="submit" class="btn btn-success btn-lg">Edit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

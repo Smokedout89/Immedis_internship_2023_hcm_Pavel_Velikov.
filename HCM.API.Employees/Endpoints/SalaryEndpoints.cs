@@ -11,6 +11,7 @@ public class SalaryEndpoints : IEndpoint
     public void RegisterEndpoints(WebApplication app)
     {
         app.MapPost("api/salaries", CreateSalary);
+        app.MapGet("api/salaries", GetSalaries);
         app.MapGet("api/salaries/{id}", GetSalary);
         app.MapPut("api/salaries/{id}", UpdateSalary);
         app.MapDelete("api/salaries/{id}", DeleteSalary);
@@ -19,6 +20,13 @@ public class SalaryEndpoints : IEndpoint
     public static async Task<IResult> CreateSalary(
         ISender sender, CreateSalaryRequest request)
     {
+        return await sender.Send(request);
+    }
+
+    public static async Task<IResult> GetSalaries(ISender sender)
+    {
+        var request = new GetSalariesRequest();
+
         return await sender.Send(request);
     }
 

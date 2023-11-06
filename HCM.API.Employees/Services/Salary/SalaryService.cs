@@ -28,6 +28,15 @@ public class SalaryService : ISalaryService
         return Response.OkData(_mapper.Map<SalaryResponse>(salary));
     }
 
+    public async Task<IResult> GetSalaries()
+    {
+        var salaries = await _salaryRepository.GetAllAsync();
+        var salariesToReturn = salaries.Select(
+            salary => _mapper.Map<SalaryResponse>(salary)).ToList();
+
+        return Response.OkData(salariesToReturn);
+    }
+
     public async Task<IResult> GetSalaryById(string id)
     {
         var salary = await _salaryRepository.GetByIdAsync(id);

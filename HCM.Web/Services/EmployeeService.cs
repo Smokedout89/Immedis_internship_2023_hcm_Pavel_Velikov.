@@ -1,11 +1,7 @@
 ﻿namespace HCM.Web.Services;
 
-using System.Text;
-
-using Contracts;
 using Models;
-
-using Newtonsoft.Json;
+using Contracts;
 
 public class EmployeeService : IEmployeeService
 {
@@ -18,6 +14,8 @@ public class EmployeeService : IEmployeeService
         _apiBaseUrl = configuration["ApiEmployeeBaseUrl"]!;
     }
 
+    // Employees
+
     public async Task<HttpResponseMessage> GetEmployees()
     {
         var client = _clientFactory.CreateClient(_apiBaseUrl);
@@ -27,6 +25,8 @@ public class EmployeeService : IEmployeeService
 
         return response;
     }
+
+    // Departments
 
     public async Task<HttpResponseMessage> GetDepartments()
     {
@@ -78,4 +78,59 @@ public class EmployeeService : IEmployeeService
 
         return response;
     }
+
+    // Towns
+
+    public async Task<HttpResponseMessage> GetTowns()
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/towns";
+
+        var response = await client.GetAsync(requestUri);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> GetTown(string id)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/towns/{id}";
+
+        var response = await client.GetAsync(requestUri);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> CreateTown(TownCreateModel model)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/towns";
+
+        var response = await client.PostAsJsonAsync(requestUri, model);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> EditTown(TownModel model)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/towns/{model.Id}";
+
+        var response = await client.PutAsJsonAsync(
+            requestUri, new TownModel { Name = model.Name });
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> DeleteTown(string id)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/towns/{id}";
+
+        var response = await client.DeleteAsync(requestUri);
+
+        return response;
+    }
+
+    // Salaries
 }

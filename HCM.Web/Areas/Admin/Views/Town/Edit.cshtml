@@ -1,0 +1,25 @@
+﻿@model TownModel
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <h1 class="text-center">Edit Town</h1>
+        <div class="col-md-4 pt-5">
+            <form method="post" asp-action="Edit" class="border p-4 rounded">
+                <div class="mt-3 text-center">
+                    <label asp-for="Name" class="form-label" style="font-size: 18px">Town Name</label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <br/>
+                <div asp-validation-summary="All" class="text-danger text-center mb-3"></div>
+                <div class="mt-3">
+                    <div class="d-flex justify-content-between">
+                        <a asp-controller="Town" asp-action="Index" class="btn btn-secondary pt-2">
+                            Back to Towns
+                        </a>
+                        <button type="submit" class="btn btn-success btn-lg">Edit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -10,5 +10,6 @@ public class MappingConfig : IRegister
     {
         config.NewConfig<EmployeeResponse, EmployeeModel>();
         config.NewConfig<DepartmentsResponse, DepartmentModel>();
+        config.NewConfig<TownsResponse, TownModel>();
     }
 }

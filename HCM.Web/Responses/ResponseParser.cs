@@ -49,4 +49,20 @@ public static class ResponseParser
 
         return parsedResponse!;
     }
+
+    public static async Task<TownsResponse> TownsResponse(HttpResponseMessage apiResponse)
+    {
+        var jsonResponse = await apiResponse.Content.ReadAsStringAsync();
+        var parsedResponse = JsonConvert.DeserializeObject<TownsResponse>(jsonResponse);
+
+        return parsedResponse!;
+    }
+
+    public static async Task<TownResponse> TownResponse(HttpResponseMessage apiResponse)
+    {
+        var jsonResponse = await apiResponse.Content.ReadAsStringAsync();
+        var parsedResponse = JsonConvert.DeserializeObject<TownResponse>(jsonResponse);
+
+        return parsedResponse!;
+    }
 }

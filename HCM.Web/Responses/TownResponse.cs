@@ -1,10 +1,10 @@
 ﻿namespace HCM.Web.Responses;
 
-public class DepartmentResponse : BaseResponse<DepartmentPayload>
+public class TownResponse : BaseResponse<TownPayload>
 {
 }
 
-public class DepartmentPayload
+public class TownPayload
 {
     public string Id { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;

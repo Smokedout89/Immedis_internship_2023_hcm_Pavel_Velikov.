@@ -27,30 +27,33 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Identity" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="User" asp-controller="Employee" asp-action="Index">Employees</a>
                         </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Department" asp-action="Index">Departments</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="" asp-action="Index">Salaries</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Town" asp-action="Index">Towns</a>
-                        </li>
-                        
-               @*          <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="User" asp-controller="" asp-action="Index">Addresses</a>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Department" asp-action="Index">Departments</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Salary" asp-action="Index">Salaries</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Town" asp-action="Index">Towns</a>
+                            </li>
+                        }
+
+                        @*          <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="User" asp-controller="" asp-action="Index">Addresses</a>
                         </li> *@
-                        
+
                         <ul class="navbar-nav justify-content-end flex-grow-1">
                             @if (HttpAccessor.HttpContext!.Session.GetString("ApplicationToken") != null &&
-                                 HttpAccessor.HttpContext!.Session.GetString("ApplicationToken")!.Length > 0)
+                                HttpAccessor.HttpContext!.Session.GetString("ApplicationToken")!.Length > 0)
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="Identity" asp-controller="Auth" asp-action="Logout">Logout</a>

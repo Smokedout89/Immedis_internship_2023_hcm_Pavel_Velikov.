@@ -9,7 +9,8 @@ public class MappingConfig : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<EmployeeResponse, EmployeeModel>();
-        config.NewConfig<DepartmentsResponse, DepartmentModel>();
-        config.NewConfig<TownsResponse, TownModel>();
+        config.NewConfig<DepartmentResponse, DepartmentModel>();
+        config.NewConfig<TownResponse, TownModel>();
+        config.NewConfig<SalaryResponse, SalaryModel>();
     }
 }

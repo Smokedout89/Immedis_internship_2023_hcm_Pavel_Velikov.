@@ -133,4 +133,59 @@ public class EmployeeService : IEmployeeService
     }
 
     // Salaries
+
+    public async Task<HttpResponseMessage> GetSalaries()
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/salaries";
+
+        var response = await client.GetAsync(requestUri);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> GetSalary(string id)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/salaries/{id}";
+
+        var response = await client.GetAsync(requestUri);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> CreateSalary(SalaryCreateModel model)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/salaries";
+
+        var response = await client.PostAsJsonAsync(requestUri, model);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> EditSalary(SalaryModel model)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/salaries/{model.Id}";
+
+        var response = await client.PutAsJsonAsync(requestUri,
+            new SalaryModel
+            {
+                GrossSalary = model.GrossSalary,
+                BonusAvailable = model.BonusAvailable
+            });
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> DeleteSalary(string id)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/salaries/{id}";
+
+        var response = await client.DeleteAsync(requestUri);
+
+        return response;
+    }
 }

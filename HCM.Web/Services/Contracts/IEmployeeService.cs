@@ -19,4 +19,11 @@ public interface IEmployeeService
     Task<HttpResponseMessage> CreateTown(TownCreateModel model);
     Task<HttpResponseMessage> EditTown(TownModel model);
     Task<HttpResponseMessage> DeleteTown(string id);
+
+    // Salaries
+    Task<HttpResponseMessage> GetSalary(string id);
+    Task<HttpResponseMessage> GetSalaries();
+    Task<HttpResponseMessage> CreateSalary(SalaryCreateModel model);
+    Task<HttpResponseMessage> EditSalary(SalaryModel model);
+    Task<HttpResponseMessage> DeleteSalary(string id);
 }

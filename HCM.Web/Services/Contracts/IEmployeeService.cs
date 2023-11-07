@@ -15,6 +15,13 @@ public interface IEmployeeService
     Task<HttpResponseMessage> GetAddress(string id);
     Task<HttpResponseMessage> CreateAddress(AddressCreateModel model);
 
+    // Courses
+    Task<HttpResponseMessage> GetCourses();
+    Task<HttpResponseMessage> GetCourse(string id);
+    Task<HttpResponseMessage> CreateCourse(CourseCreateModel model);
+    Task<HttpResponseMessage> EditCourse(CourseModel model);
+    Task<HttpResponseMessage> DeleteCourse(string id);
+
     // Departments
     Task<HttpResponseMessage> GetDepartment(string id);
     Task<HttpResponseMessage> GetDepartments();

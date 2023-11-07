@@ -97,4 +97,20 @@ public static class ResponseParser
 
         return parsedResponse!;
     }
+
+    public static async Task<CourseResponse> CourseResponse(HttpResponseMessage apiResponse)
+    {
+        var jsonResponse = await apiResponse.Content.ReadAsStringAsync();
+        var parsedResponse = JsonConvert.DeserializeObject<CourseResponse>(jsonResponse);
+
+        return parsedResponse!;
+    }
+
+    public static async Task<CoursesResponse> CoursesResponse(HttpResponseMessage apiResponse)
+    {
+        var jsonResponse = await apiResponse.Content.ReadAsStringAsync();
+        var parsedResponse = JsonConvert.DeserializeObject<CoursesResponse>(jsonResponse);
+
+        return parsedResponse!;
+    }
 }

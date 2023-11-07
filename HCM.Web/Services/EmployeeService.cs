@@ -2,6 +2,7 @@
 
 using Models;
 using Contracts;
+using Mapster;
 
 public class EmployeeService : IEmployeeService
 {
@@ -84,6 +85,59 @@ public class EmployeeService : IEmployeeService
         var requestUri = $"{_apiBaseUrl}/api/addresses/{id}";
 
         var response = await client.GetAsync(requestUri);
+
+        return response;
+    }
+
+    // Courses
+
+    public async Task<HttpResponseMessage> GetCourses()
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/courses";
+
+        var response = await client.GetAsync(requestUri);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> GetCourse(string id)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/courses/{id}";
+
+        var response = await client.GetAsync(requestUri);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> CreateCourse(CourseCreateModel model)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/courses";
+
+        var response = await client.PostAsJsonAsync(requestUri, model);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> EditCourse(CourseModel model)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/courses/{model.Id}";
+
+        var response = await client.PutAsJsonAsync(
+            requestUri, new CourseCreateModel { Name = model.Name });
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> DeleteCourse(string id)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/courses/{id}";
+
+        var response = await client.DeleteAsync(requestUri);
 
         return response;
     }

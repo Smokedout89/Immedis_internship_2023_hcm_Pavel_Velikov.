@@ -5,27 +5,43 @@ using Features.Address.Requests;
 using Domain.Abstractions.Models;
 using Features.Address.Responses;
 using Domain.Abstractions.Repositories;
+using MapsterMapper;
 
 public class AddressService : IAddressService
 {
+    private readonly IMapper _mapper;
     private readonly ITownRepository _townRepository;
     private readonly IAddressRepository _addressRepository;
 
-    public AddressService(IAddressRepository addressRepository, ITownRepository townRepository)
+    public AddressService(
+        IMapper mapper,
+        IAddressRepository addressRepository,
+        ITownRepository townRepository)
     {
+        _mapper = mapper;
         _addressRepository = addressRepository;
         _townRepository = townRepository;
     }
 
-    public async Task<IResult> CreateAddress(CreateAddressRequest request)
+    public async Task<IResult> GetAddressById(string id)
     {
-        var isCreated = await _addressRepository.GetAddressByStreetNameAndNumber(request.StreetName, request.StreetNumber);
+        var address = await _addressRepository.GetByIdAsync(id);
 
-        if (isCreated is not null && isCreated.StreetNumber == request.StreetNumber)
+        if (address is null)
         {
-            return Response.BadRequest("Address with the same street and street number is already existing.");
+            return Response.BadRequest("There is no Department with the provided Id.");
         }
 
+        var town = await _townRepository.GetByIdAsNoTracking(address.TownId);
+
+        var townToReturn = _mapper.Map<AddressResponse>(address);
+        townToReturn.Town = town!.Name;
+
+        return Response.OkData(townToReturn);
+    }
+
+    public async Task<IResult> CreateAddress(CreateAddressRequest request)
+    {
         var isTownCreated = await _townRepository.GetByIdAsync(request.TownId);
 
         if (isTownCreated is null)
@@ -33,10 +49,18 @@ public class AddressService : IAddressService
             return Response.BadRequest("There is no existing Town with the provided Id.");
         }
 
+        var isAddressCreated = await _addressRepository.GetAddressByStreetNameAndNumber(request.StreetName, request.StreetNumber);
+
+        if (isAddressCreated is not null) 
+        {
+            return Response.BadRequest(
+                "Address with the same street and street number is already existing.");
+        }
+
         var address = new Address
         {
             StreetName = request.StreetName,
-            StreetNumber = request.StreetNumber, 
+            StreetNumber = request.StreetNumber,
             TownId = request.TownId
         };
 

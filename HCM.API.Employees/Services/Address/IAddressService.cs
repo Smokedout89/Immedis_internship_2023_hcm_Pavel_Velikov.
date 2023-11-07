@@ -4,6 +4,7 @@ using Features.Address.Requests;
 
 public interface IAddressService
 {
+    Task<IResult> GetAddressById(string id);
     Task<IResult> CreateAddress(CreateAddressRequest request);
     Task<IResult> UpdateAddress(UpdateAddressRequest request);
     Task<IResult> DeleteAddress(string id);

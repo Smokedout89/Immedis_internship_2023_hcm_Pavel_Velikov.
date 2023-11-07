@@ -19,7 +19,8 @@ public class AddressRepository : Repository<Address, AddressDb>, IAddressReposit
         _context = context;
     }
 
-    public async Task<Address?> GetAddressByStreetNameAndNumber(string streetName, int streetNumber)
+    public async Task<Address?> GetAddressByStreetNameAndNumber(
+        string streetName, int streetNumber)
     {
         var address = await _context.Addresses.FirstOrDefaultAsync(
             n => n.StreetName == streetName && n.StreetNumber == streetNumber);

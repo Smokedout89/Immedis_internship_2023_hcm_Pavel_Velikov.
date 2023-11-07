@@ -9,9 +9,18 @@ public class AddressEndpoints : IEndpoint
 {
     public void RegisterEndpoints(WebApplication app)
     {
+        app.MapGet("api/addresses/{id}", GetAddress);
         app.MapPost("/api/addresses", CreateAddress);
         app.MapPut("api/addresses/{id}", UpdateAddress);
         app.MapDelete("api/addresses/{id}", DeleteAddress);
+    }
+
+    private static async Task<IResult> GetAddress(
+        ISender sender, string id)
+    {
+        var request = new GetAddressRequest { Id = id };
+
+        return await sender.Send(request);
     }
 
     private static async Task<IResult> CreateAddress(

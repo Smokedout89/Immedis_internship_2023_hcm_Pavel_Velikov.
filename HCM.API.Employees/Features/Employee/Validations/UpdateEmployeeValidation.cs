@@ -31,7 +31,7 @@ public class UpdateEmployeeValidation : AbstractValidator<UpdateEmployeeRequest>
 
         RuleFor(x => x.JobTitle)
             .MinimumLength(3)
-            .WithMessage("Jot title can't be less than 3 letters.")
+            .WithMessage("Job title can't be less than 3 letters.")
             .MaximumLength(20)
             .WithMessage("Job title can't be more than 20 letters.");
 

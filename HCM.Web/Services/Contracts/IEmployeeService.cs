@@ -6,7 +6,14 @@ public interface IEmployeeService
 {
     // Employees
     Task<HttpResponseMessage> GetEmployees();
+    Task<HttpResponseMessage> GetEmployee(string id);
     Task<HttpResponseMessage> CreateEmployee(EmployeeCreateModel model);
+    Task<HttpResponseMessage> EditEmployee(EmployeeUpdateModel model);
+    Task<HttpResponseMessage> DeleteEmployee(string id);
+
+    // Addresses
+    Task<HttpResponseMessage> GetAddress(string id);
+    Task<HttpResponseMessage> CreateAddress(AddressCreateModel model);
 
     // Departments
     Task<HttpResponseMessage> GetDepartment(string id);

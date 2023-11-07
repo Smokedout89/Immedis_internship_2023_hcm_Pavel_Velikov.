@@ -1,6 +1,6 @@
 ﻿namespace HCM.Web.Responses;
 
-public class EmployeeResponse : BaseResponse<List<EmployeePayload>>
+public class EmployeeResponse : BaseResponse<EmployeePayload>
 {
 }
 

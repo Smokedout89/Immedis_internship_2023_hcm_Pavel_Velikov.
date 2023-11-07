@@ -26,12 +26,64 @@ public class EmployeeService : IEmployeeService
         return response;
     }
 
+    public async Task<HttpResponseMessage> GetEmployee(string id)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/employees/{id}";
+
+        var response = await client.GetAsync(requestUri);
+
+        return response;
+    }
+
     public async Task<HttpResponseMessage> CreateEmployee(EmployeeCreateModel model)
     {
         var client = _clientFactory.CreateClient(_apiBaseUrl);
         var requestUri = $"{_apiBaseUrl}/api/employees";
 
         var response = await client.PostAsJsonAsync(requestUri, model);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> EditEmployee(EmployeeUpdateModel model)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/employees/{model.Id}";
+
+        var response = await client.PutAsJsonAsync(requestUri, model);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> DeleteEmployee(string id)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/employees/{id}";
+
+        var response = await client.DeleteAsync(requestUri);
+
+        return response;
+    }
+    
+    // Address
+
+    public async Task<HttpResponseMessage> CreateAddress(AddressCreateModel model)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/addresses";
+
+        var response = await client.PostAsJsonAsync(requestUri, model);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> GetAddress(string id)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/addresses/{id}";
+
+        var response = await client.GetAsync(requestUri);
 
         return response;
     }

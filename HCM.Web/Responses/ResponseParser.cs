@@ -26,11 +26,19 @@ public static class ResponseParser
         return parsedResponse!;
     }
 
+    public static async Task<EmployeesResponse> EmployeesResponse(HttpResponseMessage apiResponse)
+    {
+        var jsonResponse = await apiResponse.Content.ReadAsStringAsync();
+        var parsedResponse = JsonConvert.DeserializeObject<EmployeesResponse>(jsonResponse);
+
+        return parsedResponse!;
+    }
+
     public static async Task<EmployeeResponse> EmployeeResponse(HttpResponseMessage apiResponse)
     {
         var jsonResponse = await apiResponse.Content.ReadAsStringAsync();
         var parsedResponse = JsonConvert.DeserializeObject<EmployeeResponse>(jsonResponse);
-
+        
         return parsedResponse!;
     }
 
@@ -78,6 +86,14 @@ public static class ResponseParser
     {
         var jsonResponse = await apiResponse.Content.ReadAsStringAsync();
         var parsedResponse = JsonConvert.DeserializeObject<SalaryResponse>(jsonResponse);
+
+        return parsedResponse!;
+    }
+
+    public static async Task<AddressResponse> AddressResponse(HttpResponseMessage apiResponse)
+    {
+        var jsonResponse = await apiResponse.Content.ReadAsStringAsync();
+        var parsedResponse = JsonConvert.DeserializeObject<AddressResponse>(jsonResponse);
 
         return parsedResponse!;
     }

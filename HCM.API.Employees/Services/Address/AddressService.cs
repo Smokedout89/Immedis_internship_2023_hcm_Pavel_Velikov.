@@ -51,7 +51,7 @@ public class AddressService : IAddressService
 
         var isAddressCreated = await _addressRepository.GetAddressByStreetNameAndNumber(request.StreetName, request.StreetNumber);
 
-        if (isAddressCreated is not null) 
+        if (isAddressCreated is not null && isTownCreated.Id == isAddressCreated.TownId) 
         {
             return Response.BadRequest(
                 "Address with the same street and street number is already existing.");

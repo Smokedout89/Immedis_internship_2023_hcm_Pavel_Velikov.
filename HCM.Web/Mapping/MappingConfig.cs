@@ -8,7 +8,7 @@ public class MappingConfig : IRegister
 {
     public void Register(TypeAdapterConfig config)
     {
-        config.NewConfig<EmployeeResponse, EmployeeModel>();
+        config.NewConfig<EmployeesResponse, EmployeeModel>();
         config.NewConfig<DepartmentResponse, DepartmentModel>();
         config.NewConfig<TownResponse, TownModel>();
         config.NewConfig<SalaryResponse, SalaryModel>();

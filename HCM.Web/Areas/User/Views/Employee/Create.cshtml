@@ -1,4 +1,4 @@
-﻿@model EmployeeWithAllData
+﻿@model EmployeeDataModel
 
 <div class="container">
     <div class="row justify-content-center mt-5">
@@ -16,7 +16,7 @@
                 </div>
                 <div class="mb-3">
                     <label asp-for="Age" class="form-label">Age</label>
-                    <input asp-for="Age" class="form-control" value="18" />
+                    <input asp-for="Age" class="form-control" placeholder="Enter age" />
                 </div>
                 <div class="mb-3">
                     <label asp-for="JobTitle" class="form-label">Job Title</label>
@@ -58,6 +58,20 @@
                     <select asp-for="Salary" asp-items="ViewBag.Salaries" class="form-select">
                         <option value="" disabled selected>Select salary</option>
                     </select>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Town" class="form-label">Town</label>
+                    <select asp-for="Town" asp-items="ViewBag.Towns" class="form-select">
+                        <option value="" disabled selected>Select town</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="StreetName" class="form-label">Street Name</label>
+                    <input asp-for="StreetName" class="form-control" placeholder="Enter street name" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="StreetNumber" class="form-label">Street Number</label>
+                    <input asp-for="StreetNumber" class="form-control" placeholder="Enter street number" />
                 </div>
                 <div asp-validation-summary="All" class="text-danger text-center mb-3"></div>
                 <div class="text-center">

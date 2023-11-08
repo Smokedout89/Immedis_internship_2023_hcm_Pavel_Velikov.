@@ -151,6 +151,16 @@ public class EmployeeService : IEmployeeService
         return response;
     }
 
+    public async Task<HttpResponseMessage> CourseEmployees(string courseId)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/courses/{courseId}/employees";
+
+        var response = await client.GetAsync(requestUri);
+
+        return response;
+    }
+
     // Departments
 
     public async Task<HttpResponseMessage> GetDepartments()

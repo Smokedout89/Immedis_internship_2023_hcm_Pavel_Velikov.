@@ -14,6 +14,7 @@ public class CourseEndpoints : IEndpoint
         app.MapGet("api/courses", GetCourses);
         app.MapPut("api/courses/{id}", UpdateCourse);
         app.MapDelete("api/courses/{id}", DeleteCourse);
+        app.MapGet("api/courses/{courseId}/employees", CourseEmployees);
         app.MapPost("api/courses/{courseId}/add/{employeeId}", AddEmployeeToCourse);
     }
 
@@ -55,6 +56,14 @@ public class CourseEndpoints : IEndpoint
         ISender sender, string courseId, string employeeId)
     {
         var request = new CourseAddEmployeeRequest { CourseId = courseId, EmployeeId = employeeId };
+
+        return await sender.Send(request);
+    }
+
+    private static async Task<IResult> CourseEmployees(
+        ISender sender, string courseId)
+    {
+        var request = new CourseEmployeesRequest { Id = courseId };
 
         return await sender.Send(request);
     }

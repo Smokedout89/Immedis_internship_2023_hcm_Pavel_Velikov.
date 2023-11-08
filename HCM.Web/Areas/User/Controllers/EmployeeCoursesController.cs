@@ -5,6 +5,7 @@ using Responses;
 using MapsterMapper;
 using Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
+
 public class EmployeeCoursesController : Controller
 {
     private readonly IMapper _mapper;
@@ -59,9 +60,21 @@ public class EmployeeCoursesController : Controller
         return RedirectToAction("Index", "EmployeeCourses");
     }
 
-    public async Task<IActionResult> ViewEmployees()
+    [HttpGet]
+    public async Task<IActionResult> ViewEmployees(string id)
     {
-        return View();
+        var apiEmployeesResponse = await _employeeService.CourseEmployees(id);
+        var employeesResponse = await ResponseParser.EmployeesResponse(apiEmployeesResponse);
+
+        var employees = employeesResponse.Payload.Select(
+            employee => _mapper.Map<EmployeeModel>(employee)).ToList();
+
+        var apiCourseResponse = await _employeeService.GetCourse(id);
+        var courseResponse = await ResponseParser.CourseResponse(apiCourseResponse);
+
+        var course = _mapper.Map<CourseModel>(courseResponse.Payload);
+
+        return View(new CourseEmployeesModel { Course = course , Employees = employees });
     }
 
     private async Task<CourseAddEmployeeModel> LoadCoursesAndEmployees(string courseId)

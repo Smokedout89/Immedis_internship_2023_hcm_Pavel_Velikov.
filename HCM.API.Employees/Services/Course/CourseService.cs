@@ -98,4 +98,11 @@ public class CourseService : ICourseService
 
         return Response.Ok();
     }
+
+    public async Task<IResult> ListEmployees(string courseId)
+    {
+        var employees = await _courseRepository.CourseEmployees(courseId);
+
+        return Response.OkData(employees);
+    }
 }

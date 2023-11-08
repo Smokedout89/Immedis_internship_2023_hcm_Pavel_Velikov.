@@ -1,10 +1,9 @@
 ﻿namespace HCM.Domain.Repositories;
 
+using MapsterMapper;
 using PostgresModels;
 using Abstractions.Models;
 using Abstractions.Repositories;
-
-using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 
 public class CourseRepository : Repository<Course, CourseDb>, ICourseRepository
@@ -35,5 +34,16 @@ public class CourseRepository : Repository<Course, CourseDb>, ICourseRepository
         await _context.SaveChangesAsync();
 
         return _mapper.Map<EmployeeCourse>(employeeCourseDb);
+    }
+
+    public async Task<List<Employee>> CourseEmployees(string courseId)
+    {
+        var employeesFromDb = _context.EmployeeCourses.Where(
+            c => c.CourseId == courseId).ToList();
+
+        var employeesToReturn = employeesFromDb.Select(
+            e => _mapper.Map<Employee>(e.Employee)).ToList();
+
+        return await Task.FromResult(employeesToReturn);
     }
 }

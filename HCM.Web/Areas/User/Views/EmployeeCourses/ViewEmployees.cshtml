@@ -1,1 +1,44 @@
-﻿
+﻿@model CourseEmployeesModel
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <h1 class="text-center">Employees enrolled for the <br /> @Model.Course.Name course.</h1>
+            <div class="table-responsive text-center">
+                @if (Model.Employees.Count == 0)
+                {
+                    <br />
+                    <br />
+                    <h2>Currently there is no employees <br /> enrolled in this course.</h2>
+                }
+                else
+                {
+                    <table class="table table-bordered table-striped mt-5">
+                        <thead class="bg-primary">
+                            <tr>
+                                <th class="text-center">First Name</th>
+                                <th class="text-center">Last Name</th>
+                                <th class="text-center">Job Title</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var employee in Model.Employees)
+                            {
+                                <tr>
+                                    <td class="text-center pt-3">@employee.FirstName</td>
+                                    <td class="text-center pt-3">@employee.LastName</td>
+                                    <td class="text-center pt-3">@employee.JobTitle</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-center">
+                        <a asp-controller="EmployeeCourses" asp-action="Index" class="btn btn-secondary pt-2">
+                            Back to Employee Courses
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

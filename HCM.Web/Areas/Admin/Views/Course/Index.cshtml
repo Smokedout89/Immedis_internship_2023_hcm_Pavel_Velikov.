@@ -1,18 +1,18 @@
-﻿@model IEnumerable<DepartmentModel>
+﻿@model IEnumerable<CourseModel>
 @{
-    ViewData["Title"] = "Departments Page";
+    ViewData["Title"] = "Course Page";
 }
 
 <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-md-4">
-            <h1 class="text-center">Departments List</h1>
+            <h1 class="text-center">Courses List</h1>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped mt-5">
                     <thead class="bg-primary">
                         <tr>
-                            <th class="text-center pb-4">Department Name</th>
-                            <th class="text-center bg-secondary" style="width: 140px;">Manage Department</th>
+                            <th class="text-center pb-2">Course Name</th>
+                            <th class="text-center bg-secondary" style="width: 140px;">Manage Courses</th>
                         </tr>
                     </thead>
 
@@ -23,15 +23,15 @@
                     }
 
                     <tbody>
-                        @foreach (var department in Model)
+                        @foreach (var course in Model)
                         {
                             <tr>
-                                <td class="text-center pt-4">@department.Name</td>
+                                <td class="text-center pt-4">@course.Name</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a asp-controller="Department" asp-action="Edit" asp-route-id="@department.Id"
+                                        <a asp-controller="Course" asp-action="Edit" asp-route-id="@course.Id"
                                            class="btn btn-info mx-1" style="width: 60px;"><i class="bi bi-pencil-square"></i>Edit</a>
-                                        <a asp-controller="Department" asp-action="Delete" asp-route-id="@department.Id"
+                                        <a asp-controller="Course" asp-action="Delete" asp-route-id="@course.Id"
                                            class="btn btn-danger mx-1" style="width: 65px;"><i class="bi bi-trash3-fill"></i>Delete</a>
                                     </div>
                                 </td>
@@ -44,8 +44,8 @@
     </div>
     <div class="row justify-content-center mt-3">
         <div class="col-md-12 text-center">
-            <a asp-controller="Department" asp-action="Create"
-               class="btn btn-success"><i class="bi bi-plus-circle"></i> &nbsp;Add Department</a>
+            <a asp-controller="Course" asp-action="Create"
+               class="btn btn-success"><i class="bi bi-plus-circle"></i> &nbsp;Add Course</a>
         </div>
     </div>
 </div>

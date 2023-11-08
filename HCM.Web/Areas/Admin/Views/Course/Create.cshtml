@@ -1,21 +1,21 @@
-﻿@model DepartmentCreateModel
+﻿@model CourseCreateModel
 
 <div class="container">
     <div class="row justify-content-center mt-5">
-        <h1 class="text-center">Create Department</h1>
+        <h1 class="text-center">Create Course</h1>
         <div class="col-md-4 pt-5">
-            <form method="post" asp-controller="Department" asp-action="Create" class="border p-4 rounded">
+            <form method="post" asp-controller="Course" asp-action="Create" class="border p-4 rounded">
 
                 <div class="mt-3 text-center">
-                    <label asp-for="Name" class="form-label" style="font-size: 18px">Department Name</label>
+                    <label asp-for="Name" class="form-label" style="font-size: 18px">Course Name</label>
                     <input asp-for="Name" class="form-control"/>
                 </div>
                 <br/>
                 <div asp-validation-summary="All" class="text-danger text-center mb-3"></div>
                 <div class="mt-3">
                     <div class="d-flex justify-content-between">
-                        <a asp-controller="Department" asp-action="Index" class="btn btn-secondary pt-2">
-                            Back to Departments
+                        <a asp-controller="Course" asp-action="Index" class="btn btn-secondary pt-2">
+                            Back to Courses
                         </a>
                         <button type="submit" class="btn btn-success btn-lg">Create</button>
                     </div>

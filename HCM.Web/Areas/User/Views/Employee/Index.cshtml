@@ -9,10 +9,13 @@
             <h1 class="text-center">Employee List</h1>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped mt-5">
+
+                    <br/>
                     @if (TempData["SuccessMessage"] != null)
                     {
                         <div class="text-center alert alert-success">@TempData["SuccessMessage"]</div>
                     }
+
                     <thead class="bg-primary">
                     <tr>
                         <th class="text-center">First Name</th>

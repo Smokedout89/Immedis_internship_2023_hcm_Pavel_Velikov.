@@ -19,7 +19,7 @@ public static class DependencyInjection
             .AddCookie(options =>
             {
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(100);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
                 options.LoginPath = "/Auth/Login";
                 //options.AccessDeniedPath = "/Auth/AccessDenied";
                 options.SlidingExpiration = true;

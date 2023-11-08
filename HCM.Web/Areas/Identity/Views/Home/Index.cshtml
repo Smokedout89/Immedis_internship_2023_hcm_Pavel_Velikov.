@@ -23,7 +23,7 @@
         @if (HttpAccessor.HttpContext!.Session.GetString("ApplicationToken") != null &&
         HttpAccessor.HttpContext!.Session.GetString("ApplicationToken")!.Length > 0)
         {
-            <h3>You can now manage Employees and use the other functionalities of the site.</h3>
+            <h3>You can now use the functionalities of the site that you are authorized to.</h3>
         }
         else
         {

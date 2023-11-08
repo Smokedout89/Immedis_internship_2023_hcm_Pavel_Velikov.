@@ -12,5 +12,6 @@ public class MappingConfig : IRegister
         config.NewConfig<DepartmentResponse, DepartmentModel>();
         config.NewConfig<TownResponse, TownModel>();
         config.NewConfig<SalaryResponse, SalaryModel>();
+        config.NewConfig<CourseResponse, CourseModel>();
     }
 }

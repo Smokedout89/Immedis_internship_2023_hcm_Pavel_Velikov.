@@ -95,7 +95,8 @@ public class AuthController : Controller
     public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync();
-        HttpContext.Session.SetString("ApplicationToken", string.Empty);
+
+        HttpContext.Session.Clear();
 
         TempData["SuccessMessage"] = "You have logged out successfully.";
 

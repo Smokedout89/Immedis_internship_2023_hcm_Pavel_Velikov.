@@ -9,4 +9,5 @@ public interface ICourseService
     Task<IResult> GetCourses();
     Task<IResult> UpdateCourse(UpdateCourseRequest request);
     Task<IResult> DeleteCourse(string id);
+    Task<IResult> AddEmployeeToCourse(CourseAddEmployeeRequest request);
 }

@@ -23,12 +23,8 @@ public class TownController : Controller
         var apiResponse = await _employeeService.GetTowns();
         var response = await ResponseParser.TownsResponse(apiResponse);
 
-        var towns = new List<TownModel>();
-
-        foreach (var town in response.Payload)
-        {
-            towns.Add(_mapper.Map<TownModel>(town));
-        }
+        var towns = response.Payload.Select(
+            town => _mapper.Map<TownModel>(town)).ToList();
 
         return View(towns);
     }

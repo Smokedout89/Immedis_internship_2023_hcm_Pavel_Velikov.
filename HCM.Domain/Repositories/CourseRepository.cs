@@ -26,4 +26,14 @@ public class CourseRepository : Repository<Course, CourseDb>, ICourseRepository
 
         return _mapper.Map<Course>(course!);
     }
+
+    public async Task<EmployeeCourse> AddEmployeeToCourse(string courseId, string employeeId)
+    {
+        var employeeCourseDb = new EmployeeCourseDb { CourseId = courseId, EmployeeId = employeeId };
+
+        await _context.EmployeeCourses.AddAsync(employeeCourseDb);
+        await _context.SaveChangesAsync();
+
+        return _mapper.Map<EmployeeCourse>(employeeCourseDb);
+    }
 }

@@ -2,7 +2,6 @@
 
 using Models;
 using Contracts;
-using Mapster;
 
 public class EmployeeService : IEmployeeService
 {
@@ -138,6 +137,16 @@ public class EmployeeService : IEmployeeService
         var requestUri = $"{_apiBaseUrl}/api/courses/{id}";
 
         var response = await client.DeleteAsync(requestUri);
+
+        return response;
+    }
+
+    public async Task<HttpResponseMessage> CourseAddEmployee(EmployeeCourseModel model)
+    {
+        var client = _clientFactory.CreateClient(_apiBaseUrl);
+        var requestUri = $"{_apiBaseUrl}/api/courses/{model.CourseId}/add/{model.EmployeeId}";
+
+        var response = await client.PostAsJsonAsync(requestUri, model);
 
         return response;
     }

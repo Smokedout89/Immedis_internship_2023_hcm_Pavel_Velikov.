@@ -22,12 +22,8 @@ public class CourseController : Controller
         var apiResponse = await _employeeService.GetCourses();
         var response = await ResponseParser.CoursesResponse(apiResponse);
 
-        var courses = new List<CourseModel>();
-
-        foreach (var course in response.Payload)
-        {
-            courses.Add(_mapper.Map<CourseModel>(course));
-        }
+        var courses = response.Payload.Select(
+            course => _mapper.Map<CourseModel>(course)).ToList();
 
         return View(courses);
     }

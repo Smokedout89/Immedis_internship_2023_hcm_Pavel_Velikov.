@@ -83,4 +83,19 @@ public class CourseService : ICourseService
 
         return Response.Ok();
     }
+
+    public async Task<IResult> AddEmployeeToCourse(CourseAddEmployeeRequest request)
+    {
+        var course = await _courseRepository.GetByIdAsync(request.CourseId);
+
+        if (course!.EmployeeCourses.Any(e => e.EmployeeId == request.EmployeeId))
+        {
+            return Response.BadRequest("The employee is already added to this course.");
+        }
+
+        await _courseRepository.AddEmployeeToCourse(
+            request.CourseId, request.EmployeeId);
+
+        return Response.Ok();
+    }
 }

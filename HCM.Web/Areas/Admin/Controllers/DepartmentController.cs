@@ -23,12 +23,8 @@ public class DepartmentController : Controller
         var apiResponse = await _employeeService.GetDepartments();
         var response = await ResponseParser.DepartmentsResponse(apiResponse);
 
-        var departments = new List<DepartmentModel>();
-
-        foreach (var department in response.Payload)
-        {
-            departments.Add(_mapper.Map<DepartmentModel>(department));
-        }
+        var departments = response.Payload.Select(
+            department => _mapper.Map<DepartmentModel>(department)).ToList();
 
         return View(departments);
     }

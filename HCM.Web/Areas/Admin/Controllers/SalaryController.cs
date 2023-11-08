@@ -24,12 +24,8 @@ public class SalaryController : Controller
         var apiResponse = await _employeeService.GetSalaries();
         var response = await ResponseParser.SalariesResponse(apiResponse);
 
-        var salaries = new List<SalaryModel>();
-
-        foreach (var town in response.Payload)
-        {
-            salaries.Add(_mapper.Map<SalaryModel>(town));
-        }
+        var salaries = response.Payload.Select(
+            town => _mapper.Map<SalaryModel>(town)).ToList();
 
         return View(salaries);
     }

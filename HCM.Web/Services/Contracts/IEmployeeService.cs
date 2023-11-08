@@ -21,6 +21,7 @@ public interface IEmployeeService
     Task<HttpResponseMessage> CreateCourse(CourseCreateModel model);
     Task<HttpResponseMessage> EditCourse(CourseModel model);
     Task<HttpResponseMessage> DeleteCourse(string id);
+    Task<HttpResponseMessage> CourseAddEmployee(EmployeeCourseModel model);
 
     // Departments
     Task<HttpResponseMessage> GetDepartment(string id);

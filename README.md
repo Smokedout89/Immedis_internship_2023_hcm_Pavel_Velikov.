@@ -41,4 +41,4 @@ user@test.bg - Parola321
 ````
 
 ## Database diagram
-![diagram](https://ibb.co/nLKqtmg)
+<img src="https://i.ibb.co/9rdmSg8/Screenshot-2023-11-09-162121.png" alt="diagram">

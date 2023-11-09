@@ -23,9 +23,22 @@ The Human Capital Management (HCM) system is designed to facilitate efficient ma
 
 - **Department Management:**
   - Add, edit, and delete departments.
-  - 
+    
 - **Salary Management:**
-  - - Add, edit, and delete salaries.
-    - 
+  -  Add, edit, and delete salaries.
+
 - **Town Management:**
   - Add, edit, and delete towns.
+
+## Test accounts
+* Admin
+````
+admin@test.bg - Parola123
+````
+* User
+````
+user@test.bg - Parola321
+````
+
+## Database diagram
+![diagram](https://ibb.co/nLKqtmg)

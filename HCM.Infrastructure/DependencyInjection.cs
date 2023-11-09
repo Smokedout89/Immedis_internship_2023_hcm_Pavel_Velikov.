@@ -49,18 +49,18 @@ public static class DependencyInjection
         return services;
     }
 
-    public static void ApplicationSeeder(this IServiceProvider serviceProvider)
+    public static async void ApplicationSeeder(this IServiceProvider serviceProvider)
     {
         using var serviceScope = serviceProvider.CreateScope();
 
         var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-        dbContext.Database.Migrate();
+        await dbContext.Database.MigrateAsync();
 
-        new ApplicationDbContextSeeder()
+        await new ApplicationDbContextSeeder()
             .SeedAsync(
                 dbContext,
-                serviceScope.ServiceProvider).GetAwaiter().GetResult();
+                serviceScope.ServiceProvider);
     }
 
     private static IServiceCollection AddRepositories(

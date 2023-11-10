@@ -1,0 +1,68 @@
+version: '3.4'
+
+networks:
+  hcm-dev:
+    driver: bridge
+
+volumes:
+  postgresdata:
+
+services:
+  hcm.web:
+    image: ${DOCKER_REGISTRY-}hcmweb
+    ports:
+      - "7080:80"
+      - "7081:443"
+    build:
+      context: .
+      dockerfile: HCM.Web/Dockerfile
+    depends_on:
+      - hcm.api.identity
+      - hcm.api.employees
+    networks:
+      - hcm-dev
+    
+
+  hcm.api.identity:
+    image: ${DOCKER_REGISTRY-}hcmapiidentity
+    ports:
+      - "7000:80"
+      - "7001:443"
+    build:
+      context: .
+      dockerfile: HCM.Api.Identity/Dockerfile
+    environment:
+      - DatabaseConnection=${ConnectionStrings__DatabaseConnection}
+    depends_on:
+      - hcm.database
+    networks:
+      - hcm-dev
+
+
+  hcm.api.employees:
+    image: ${DOCKER_REGISTRY-}hcmapiemployees
+    ports:
+      - "7070:80"
+      - "7071:443"
+    build:
+      context: .
+      dockerfile: HCM.API.Employees/Dockerfile
+    environment:
+      - DatabaseConnection=${ConnectionStrings__DatabaseConnection}
+    depends_on:
+      - hcm.database
+    networks:
+      - hcm-dev
+
+  hcm.database:
+    image: postgres:latest
+    container_name: HCM.PostgresDb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=p4ssw0rd!
+    ports:
+      - "5432:5432"
+    networks:
+      - hcm-dev
+    volumes:
+      - postgresdata:/var/lib/postgresql/data

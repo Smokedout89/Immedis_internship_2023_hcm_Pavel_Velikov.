@@ -299,8 +299,7 @@ public class EmployeeController : Controller
         ViewBag.Towns = towns.Select(x =>
             new SelectListItem(x.Name, x.Id)).ToList();
         ViewBag.Salaries = salaries.Select(x =>
-            new SelectListItem(x.GrossSalary.ToString(
-                "c"), x.Id)).ToList();
+            new SelectListItem(x.GrossSalary.ToString("F"), x.Id)).ToList();
 
         return model;
     }

@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCM.API.Identity", "HCM.Api
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCM.Domain.Abstractions", "HCM.Domain.Abstractions\HCM.Domain.Abstractions.csproj", "{4BFA8080-7BDB-47AD-B34F-CAF3A634CE4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCM.API.Employees", "HCM.API.Employees\HCM.API.Employees.csproj", "{C941BBE7-6313-454A-ABB4-37640BFAC20D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCM.API.Employees", "HCM.API.Employees\HCM.API.Employees.csproj", "{C941BBE7-6313-454A-ABB4-37640BFAC20D}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{08337DEE-03C3-4D3D-8583-BC82BB709D83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{C941BBE7-6313-454A-ABB4-37640BFAC20D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C941BBE7-6313-454A-ABB4-37640BFAC20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C941BBE7-6313-454A-ABB4-37640BFAC20D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08337DEE-03C3-4D3D-8583-BC82BB709D83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08337DEE-03C3-4D3D-8583-BC82BB709D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08337DEE-03C3-4D3D-8583-BC82BB709D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08337DEE-03C3-4D3D-8583-BC82BB709D83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

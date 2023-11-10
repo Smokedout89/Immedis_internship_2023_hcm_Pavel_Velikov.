@@ -20,8 +20,7 @@
         <br />
         <br />
 
-        @if (HttpAccessor.HttpContext!.Session.GetString("ApplicationToken") != null &&
-        HttpAccessor.HttpContext!.Session.GetString("ApplicationToken")!.Length > 0)
+        @if (User.IsInRole("Admin") || User.IsInRole("User"))
         {
             <h3>You can now use the functionalities of the site that you are authorized to.</h3>
         }

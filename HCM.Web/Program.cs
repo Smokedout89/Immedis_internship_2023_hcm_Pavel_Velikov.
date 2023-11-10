@@ -7,10 +7,6 @@ builder.Services.AddWeb(builder.Configuration);
 
 var app = builder.Build();
 
-app.UseCors(c => c.WithOrigins("https://localhost:7070")
-    .AllowAnyMethod()
-    .AllowAnyHeader());
-
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

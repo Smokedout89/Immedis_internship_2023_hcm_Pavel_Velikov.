@@ -1,6 +1,7 @@
 ﻿namespace HCM.API.Identity.Endpoints;
 
 using Abstractions;
+using Domain.Abstractions.Models.Enums;
 using Features.Roles.Requests;
 using Features.Users.Requests;
 using MediatR;
@@ -9,18 +10,18 @@ public class UserEndpoints : IEndpoint
 {
     public void RegisterEndpoints(WebApplication app)
     {
-        app.MapPost("api/roles", CreateRole);
-        //.RequireAuthorization(policyNames: Roles.Admin.ToString());
-        app.MapGet("api/users/{id}", GetUser);
-        //.RequireAuthorization(policyNames: Roles.Admin.ToString());
-        app.MapGet("api/users", GetUsers);
-        //.RequireAuthorization(policyNames: Roles.Admin.ToString());
+        app.MapPost("api/roles", CreateRole)
+        .RequireAuthorization(policyNames: Roles.Admin.ToString());
+        app.MapGet("api/users/{id}", GetUser)
+        .RequireAuthorization(policyNames: Roles.Admin.ToString());
+        app.MapGet("api/users", GetUsers)
+        .RequireAuthorization(policyNames: Roles.Admin.ToString());
         app.MapPost("api/users/register", RegisterUser);
         app.MapPost("api/users/login", LoginUser);
-        app.MapPut("api/users/{id}/promote", PromoteUser);
-        //.RequireAuthorization(policyNames: Roles.Admin.ToString());
-        app.MapDelete("/api/users/{id}", DeleteUser);
-        //.RequireAuthorization(policyNames: Roles.Admin.ToString());
+        app.MapPut("api/users/{id}/promote", PromoteUser)
+        .RequireAuthorization(policyNames: Roles.Admin.ToString());
+        app.MapDelete("/api/users/{id}", DeleteUser)
+        .RequireAuthorization(policyNames: Roles.Admin.ToString());
     }
 
     private static async Task<IResult> CreateRole(ISender sender, CreateRoleRequest request)

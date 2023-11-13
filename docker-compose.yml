@@ -31,8 +31,6 @@ services:
     build:
       context: .
       dockerfile: HCM.Api.Identity/Dockerfile
-    environment:
-      - DatabaseConnection=${ConnectionStrings__DatabaseConnection}
     depends_on:
       - hcm.database
     networks:
@@ -47,8 +45,6 @@ services:
     build:
       context: .
       dockerfile: HCM.API.Employees/Dockerfile
-    environment:
-      - DatabaseConnection=${ConnectionStrings__DatabaseConnection}
     depends_on:
       - hcm.database
     networks:

@@ -2,9 +2,9 @@
 
 using Abstractions;
 using MapsterMapper;
+using Abstractions.Repositories;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using HCM.Domain.Abstractions.Repositories;
 
 public class Repository<TModel, TPostgres> : IRepository<TModel>
     where TModel : Model

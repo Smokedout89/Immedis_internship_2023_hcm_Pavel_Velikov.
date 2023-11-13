@@ -3,9 +3,9 @@
 using Features.Users.Requests;
 using Features.Users.Responses;
 using Infrastructure.Responses;
+using Domain.Abstractions.Models;
 using Infrastructure.Authentication;
-using HCM.Domain.Abstractions.Models;
-using HCM.Domain.Abstractions.Repositories;
+using Domain.Abstractions.Repositories;
 
 using MapsterMapper;
 

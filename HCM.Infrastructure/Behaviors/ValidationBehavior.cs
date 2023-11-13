@@ -1,12 +1,10 @@
 ﻿namespace HCM.Infrastructure.Behaviors;
 
-using System.Text;
-using System.Xml;
-using FluentValidation;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Requests;
 using Responses;
+using FluentValidation;
+using Microsoft.AspNetCore.Http;
 
 public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : BaseRequest
